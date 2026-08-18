@@ -52,10 +52,14 @@ tr.data-row:hover{background:#fff}
 .ms-panel label{display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:12.5px;cursor:pointer;border-radius:6px;white-space:nowrap}
 .ms-panel label:hover{background:#f1f8ec}
 .ms-panel input{accent-color:#43a047;cursor:pointer;margin:0}
+.board-foot{display:flex;align-items:center;justify-content:center;gap:18px;
+  padding:12px 24px 18px;color:#5a6b5a;font-size:13px;border-top:1px solid #e8eee4;margin-top:6px}
+.board-foot .foot-item b{color:#2e7d32;font-size:15px}
+.board-foot .foot-sep{color:#c5d6bd}
 </style></head><body>
 <div class="board">
   <div class="board-head"><div class="board-title">华南车型四轮驱动看板</div><div class="board-date">8 / 17</div></div>
-                                                                                                                  <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
+                                                                                                                    <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
   <div class="wrap"><table>
     <colgroup>
     <col style="width:110px"><col style="width:54px">
@@ -6423,6 +6427,26 @@ tr.data-row:hover{background:#fff}
     document.addEventListener('click',function(){
       document.querySelectorAll('.mselect.open').forEach(function(o){ o.classList.remove('open'); });
     });
+  })();
+  </script>
+  <div class="board-foot">
+    <span class="foot-item">今日访问量：<b id="visToday">0</b></span>
+    <span class="foot-sep">｜</span>
+    <span class="foot-item">累计访问量：<b id="visTotal">0</b></span>
+  </div>
+  <script>
+  (function(){
+    var K_T='leap_dash_total', K_D='leap_dash_date', K_Y='leap_dash_today';
+    var today=new Date().toISOString().slice(0,10);
+    var total=(parseInt(localStorage.getItem(K_T)||'0',10))+1;
+    localStorage.setItem(K_T,String(total));
+    var last=localStorage.getItem(K_D);
+    var todayCnt=(last===today)?(parseInt(localStorage.getItem(K_Y)||'0',10))+1:1;
+    localStorage.setItem(K_D,today);
+    localStorage.setItem(K_Y,String(todayCnt));
+    var t=document.getElementById('visToday'), o=document.getElementById('visTotal');
+    if(t)t.textContent=todayCnt;
+    if(o)o.textContent=total;
   })();
   </script>
   </div></body></html>
