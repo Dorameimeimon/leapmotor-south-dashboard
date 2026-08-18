@@ -52,14 +52,10 @@ tr.data-row:hover{background:#fff}
 .ms-panel label{display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:12.5px;cursor:pointer;border-radius:6px;white-space:nowrap}
 .ms-panel label:hover{background:#f1f8ec}
 .ms-panel input{accent-color:#43a047;cursor:pointer;margin:0}
-.board-foot{display:flex;align-items:center;justify-content:center;gap:18px;
-  padding:12px 24px 18px;color:#5a6b5a;font-size:13px;border-top:1px solid #e8eee4;margin-top:6px}
-.board-foot .foot-item b{color:#2e7d32;font-size:15px}
-.board-foot .foot-sep{color:#c5d6bd}
 </style></head><body>
 <div class="board">
   <div class="board-head"><div class="board-title">华南车型四轮驱动看板</div><div class="board-date">8 / 17</div></div>
-                                                                                                                            <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
+                                                                                                                              <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
   <div class="wrap"><table>
     <colgroup>
     <col style="width:110px"><col style="width:54px">
@@ -6427,25 +6423,6 @@ tr.data-row:hover{background:#fff}
     document.addEventListener('click',function(){
       document.querySelectorAll('.mselect.open').forEach(function(o){ o.classList.remove('open'); });
     });
-  })();
-  </script>
-  <div class="board-foot">
-    <span class="foot-item">今日访问量：<b><span id="vis_pv_today">—</span></b></span>
-    <span class="foot-sep">｜</span>
-    <span class="foot-item">累计访问量：<b><span id="busuanzi_value_site_pv">—</span></b></span>
-  </div>
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <script>
-  /* 访客统计用不蒜子(busuanzi)：国内稳定、免后端、全站共享真实计数。
-     免费版不开放"按天"接口，故今日/累计均取 site_pv(累计浏览量)，
-     两行口径一致、显示同一数值；如需严格"今日归零"需自建后端。 */
-  (function(){
-    function copy(){
-      var pv=document.getElementById('busuanzi_value_site_pv');
-      var t=document.getElementById('vis_pv_today');
-      if(pv&&t&&pv.textContent&&pv.textContent!=='—'){ t.textContent=pv.textContent; }
-    }
-    var n=0, iv=setInterval(function(){ copy(); if((document.getElementById('busuanzi_value_site_pv').textContent!=='—')||(++n>40)) clearInterval(iv); },200);
   })();
   </script>
   </div></body></html>
