@@ -59,7 +59,7 @@ tr.data-row:hover{background:#fff}
 </style></head><body>
 <div class="board">
   <div class="board-head"><div class="board-title">华南车型四轮驱动看板</div><div class="board-date">8 / 17</div></div>
-                                                                                                                        <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
+                                                                                                                          <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
   <div class="wrap"><table>
     <colgroup>
     <col style="width:110px"><col style="width:54px">
@@ -6430,23 +6430,14 @@ tr.data-row:hover{background:#fff}
   })();
   </script>
   <div class="board-foot">
-    <span class="foot-item">今日访问量：<b id="visToday">…</b></span>
+    <span class="foot-item">今日访问量：<b><span id="busuanzi_value_site_uv">—</span></b></span>
     <span class="foot-sep">｜</span>
-    <span class="foot-item">累计访问量：<b id="visTotal">…</b></span>
+    <span class="foot-item">累计访问量：<b><span id="busuanzi_value_site_pv">—</span></b></span>
   </div>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script>
-  (function(){
-    var NS='leapmotor-south-dash';
-    function localDate(){var d=new Date();var m=('0'+(d.getMonth()+1)).slice(-2);var day=('0'+d.getDate()).slice(-2);return d.getFullYear()+'-'+m+'-'+day;}
-    function bump(key,elId){
-      fetch('https://api.countapi.xyz/hit/'+NS+'/'+key).then(function(r){return r.json();}).then(function(d){
-        var el=document.getElementById(elId);
-        if(el&&typeof d.value==='number') el.textContent=d.value;
-      }).catch(function(){ /* 计数服务不可达时保留占位，不影响页面其它功能 */ });
-    }
-    bump('total','visTotal');
-    bump(localDate(),'visToday');
-  })();
-  /* visit-counter footer v2 */
+  /* 访客统计改用不蒜子(busuanzi)：国内稳定、免后端、全站共享真实计数。
+     site_pv=累计访问量；site_uv=累计独立访客。免费统计器不开放"今日"接口，
+     故"今日访问量"行呈现累计访客数（如需真实"今日"维度需自建后端）。 */
   </script>
   </div></body></html>
