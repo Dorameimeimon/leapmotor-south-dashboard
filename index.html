@@ -55,7 +55,7 @@ tr.data-row:hover{background:#fff}
 </style></head><body>
 <div class="board">
   <div class="board-head"><div class="board-title">华南车型四轮驱动看板</div><div class="board-date">9 / 5</div></div>
-                                                                                                                                                                          <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
+                                                                                                                                                                            <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
   <div class="wrap"><table>
     <colgroup>
     <col style="width:110px"><col style="width:54px">
@@ -6373,15 +6373,22 @@ tr.data-row:hover{background:#fff}
     }
     function initFilter(o){
       var tbl=document.getElementById(o.tableId);
-      // 为每个维度下拉框构建 维度值→所属经理 映射（用于经理→维度 单向联动隐藏）
-      var dimToMgrs={};
+      // 为每个维度下拉框构建共现信息 cooc[dimKey][值] = { mg:{经理:true}, others:{其他维度: {值:true}} }
+      // 用于：① 经理→各维度 单向联动隐藏；② 维度之间（如 集团→门店）联动隐藏
+      var cooc={};
       o.dimBoxes.forEach(function(db){
-        dimToMgrs[db.dimKey]={};
+        cooc[db.dimKey]={};
         tbl.querySelectorAll('tbody tr.data-row').forEach(function(tr){
           var m=tr.getAttribute('data-mgr');
           var d=tr.getAttribute(db.dimKey);
-          if(!dimToMgrs[db.dimKey][d]) dimToMgrs[db.dimKey][d]={};
-          dimToMgrs[db.dimKey][d][m]=true;
+          if(!cooc[db.dimKey][d]) cooc[db.dimKey][d]={mg:{},others:{}};
+          cooc[db.dimKey][d].mg[m]=true;
+          o.dimBoxes.forEach(function(db2){
+            if(db2.dimKey===db.dimKey) return;
+            var v2=tr.getAttribute(db2.dimKey);
+            if(!cooc[db.dimKey][d].others[db2.dimKey]) cooc[db.dimKey][d].others[db2.dimKey]={};
+            cooc[db.dimKey][d].others[db2.dimKey][v2]=true;
+          });
         });
       });
       var mgrGetter=setup(o.mgrBoxId, apply);
@@ -6389,21 +6396,32 @@ tr.data-row:hover{background:#fff}
       o.dimBoxes.forEach(function(db){ dimGetters[db.dimKey]=setup(db.boxId, apply); });
       function apply(){
         var mg=mgrGetter();
-        // 经理→各维度下拉 联动：隐藏不属于所选经理的选项
+        // 先收集各维度已选值
+        var sel={};
+        o.dimBoxes.forEach(function(db){ sel[db.dimKey]=dimGetters[db.dimKey](); });
+        // 计算各维度下拉可见性（受 经理 + 其他维度选择 共同约束 → 联动隐藏）
         o.dimBoxes.forEach(function(db){
           var box=document.getElementById(db.boxId);
-          box.querySelectorAll('.ms-panel input[type=checkbox]').forEach(function(cb){
+          box.querySelectorAll('input[type=checkbox]').forEach(function(cb){
             var d=cb.value;
-            var visible=(mg.length===0)?true:Object.keys(dimToMgrs[db.dimKey][d]||{}).some(function(m){ return mg.indexOf(m)>=0; });
+            var info=cooc[db.dimKey][d];
+            var mgrOK=(mg.length===0)|| mg.some(function(mm){ return info.mg[mm]; });
+            var otherOK=true;
+            o.dimBoxes.forEach(function(db2){
+              if(db2.dimKey===db.dimKey) return;
+              var sel2=sel[db2.dimKey];
+              if(sel2.length===0) return; // 该维度未选则不约束
+              var others=info.others[db2.dimKey];
+              if(!sel2.some(function(v){ return others && others[v]; })) otherOK=false;
+            });
+            var visible=mgrOK && otherOK;
             cb.closest('label').style.display=visible?'':'none';
             if(!visible&&cb.checked) cb.checked=false;
           });
-          var n=box.querySelectorAll('.ms-panel input[type=checkbox]:checked').length;
+          var n=box.querySelectorAll('input[type=checkbox]:checked').length;
           box.querySelector('.ms-label').textContent=n?('已选 '+n+' 项'):'全部';
         });
         // 行过滤：经理 AND 各维度（取交集）
-        var sel={};
-        o.dimBoxes.forEach(function(db){ sel[db.dimKey]=dimGetters[db.dimKey](); });
         tbl.querySelectorAll('tbody tr.data-row').forEach(function(tr){
           var m=tr.getAttribute('data-mgr');
           var ok=(mg.length===0||mg.indexOf(m)>=0);
