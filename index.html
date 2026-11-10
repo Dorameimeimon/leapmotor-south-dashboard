@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="build" content="2026-11-10 09:51:30">
+  <meta name="build" content="2026-11-10 15:23:31">
 <title>年型四轮驱动 - 零售经理车系锁单内占比看板</title>
 <style>
 *{box-sizing:border-box}
@@ -53,10 +53,14 @@ tr.data-row:hover{background:#fff}
 .ms-panel label{display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:12.5px;cursor:pointer;border-radius:6px;white-space:nowrap}
 .ms-panel label:hover{background:#f1f8ec}
 .ms-panel input{accent-color:#43a047;cursor:pointer;margin:0}
+/* 表4：车型筛选动态列 → 允许横向滚动，避免列变多后被 board 裁切 */
+#storeTableWrap{overflow-x:auto;overflow-y:visible}
+.ms-total{display:none;font-size:12.5px;font-weight:700;color:#1b5e20;background:#e8f5e9;
+   border:1px solid #c8e6c9;border-radius:8px;padding:6px 12px;letter-spacing:.3px}
 </style></head><body>
 <div class="board">
   <div class="board-head"><div class="board-title">华南车型四轮驱动看板</div><div class="board-date">11 / 9</div></div>
-                                                                                                                                                                                                                                                                                                                                        <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
+                                                                                                                                                                                                                                                                                                                                                  <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
   <div class="wrap"><table>
     <colgroup>
     <col style="width:110px"><col style="width:54px">
@@ -80,7 +84,7 @@ tr.data-row:hover{background:#fff}
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
-    <th class="sep">A05</th><th>A10</th><th>B01</th><th>B10</th><th>Lafa5</th><th>C10</th><th>C11</th><th>C16</th><th>D19</th><th>D99</th></tr></thead>
+    <th class="sep">A05</th><th>A10</th><th>B01</th><th>B10</th><th>Lafa 5</th><th>C10</th><th>C11</th><th>C16</th><th>D19</th><th>D99</th></tr></thead>
   <tbody>
 <tr class="summary-row">
   <td class="name-cell summary-row">华南</td>
@@ -455,6 +459,7 @@ tr.data-row:hover{background:#fff}
         <label><input type="checkbox" value="陵水"> 陵水</label>
       </div>
     </div>
+
   </div>
   <div class="wrap"><table id="cityTable" style="width:1081px">
   <colgroup>
@@ -480,7 +485,7 @@ tr.data-row:hover{background:#fff}
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
-    <th class="sep">A05</th><th>A10</th><th>B01</th><th>B10</th><th>Lafa5</th><th>C10</th><th>C11</th><th>C16</th><th>D19</th><th>D99</th></tr></thead>
+    <th class="sep">A05</th><th>A10</th><th>B01</th><th>B10</th><th>Lafa 5</th><th>C10</th><th>C11</th><th>C16</th><th>D19</th><th>D99</th></tr></thead>
   <tbody><tr class="summary-row">
   <td class="name-cell summary-row">华南</td>
   <td class="name-cell summary-row">华南</td>
@@ -1489,6 +1494,7 @@ tr.data-row:hover{background:#fff}
         <label><input type="checkbox" value="骏威"> 骏威</label>
       </div>
     </div>
+
   </div>
   <div class="wrap"><table id="merchTable" style="width:1081px">
   <colgroup>
@@ -1514,7 +1520,7 @@ tr.data-row:hover{background:#fff}
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
-    <th class="sep">A05</th><th>A10</th><th>B01</th><th>B10</th><th>Lafa5</th><th>C10</th><th>C11</th><th>C16</th><th>D19</th><th>D99</th></tr></thead>
+    <th class="sep">A05</th><th>A10</th><th>B01</th><th>B10</th><th>Lafa 5</th><th>C10</th><th>C11</th><th>C16</th><th>D19</th><th>D99</th></tr></thead>
   <tbody><tr class="summary-row">
   <td class="name-cell summary-row">华南</td>
   <td class="name-cell summary-row">华南</td>
@@ -2646,8 +2652,25 @@ tr.data-row:hover{background:#fff}
         <label><input type="checkbox" value="琼海体验中心豪华路车城店"> 琼海体验中心豪华路车城店</label>
       </div>
     </div>
+    <span class="fb-label">车型：</span>
+    <div class="mselect" id="modelBox">
+      <button type="button" class="ms-btn"><span class="ms-label">全部</span><span class="caret">▾</span></button>
+      <div class="ms-panel">
+        <label><input type="checkbox" value="A05"> A05</label>
+        <label><input type="checkbox" value="A10"> A10</label>
+        <label><input type="checkbox" value="B01"> B01</label>
+        <label><input type="checkbox" value="B10"> B10</label>
+        <label><input type="checkbox" value="Lafa 5"> Lafa 5</label>
+        <label><input type="checkbox" value="C10"> C10</label>
+        <label><input type="checkbox" value="C11"> C11</label>
+        <label><input type="checkbox" value="C16"> C16</label>
+        <label><input type="checkbox" value="D19"> D19</label>
+        <label><input type="checkbox" value="D99"> D99</label>
+      </div>
+    </div>
+    <span class="ms-total" id="modelTotal"></span>
   </div>
-  <div class="wrap"><table id="storeTable" style="width:1371px">
+  <div class="wrap" id="storeTableWrap"><table id="storeTable" style="width:1371px">
   <colgroup>
     <col style="width:110px"><col style="width:72px"><col style="width:200px"><col style="width:90px"><col style="width:54px">
     <col span="2" style="width:44px"><col span="2" style="width:44px">
@@ -2666,15 +2689,15 @@ tr.data-row:hover{background:#fff}
     <th colspan="2" class="sep">C系 ~35%</th>
     <th colspan="2" class="sep">D系 ~10%</th>
     <th colspan="2" class="sep">3个10-60%</th>
-    <th colspan="10" class="sep">内占比</th></tr>
+    <th colspan="10" class="sep model-group">内占比</th></tr>
   <tr class="series-header">
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
     <th class="sep">锁单数</th><th>内占比</th>
-    <th class="sep">A05</th><th>A10</th><th>B01</th><th>B10</th><th>Lafa5</th><th>C10</th><th>C11</th><th>C16</th><th>D19</th><th>D99</th></tr></thead>
-  <tbody><tr class="summary-row">
+    <th class="mth sep">A05</th><th class="mth">A10</th><th class="mth">B01</th><th class="mth">B10</th><th class="mth">Lafa 5</th><th class="mth">C10</th><th class="mth">C11</th><th class="mth">C16</th><th class="mth">D19</th><th class="mth">D99</th></tr></thead>
+  <tbody><tr class="summary-row" data-mm="78,926,96,305,73,339,121,202,93,18">
   <td class="name-cell summary-row">华南</td>
   <td class="name-cell summary-row">华南</td>
   <td class="name-cell summary-row">华南</td>
@@ -2690,18 +2713,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell summary-row">4.9%</td>
   <td class="lock-num sep summary-row">1570</td>
   <td class="ratio-cell summary-row">69.7%</td>
-  <td class="ratio-cell summary-row sep">3.5%</td>
-  <td class="ratio-cell summary-row">41.1%</td>
-  <td class="ratio-cell summary-row">4.3%</td>
-  <td class="ratio-cell summary-row">13.5%</td>
-  <td class="ratio-cell summary-row">3.2%</td>
-  <td class="ratio-cell summary-row">15.1%</td>
-  <td class="ratio-cell summary-row">5.4%</td>
-  <td class="ratio-cell summary-row">9.0%</td>
-  <td class="ratio-cell summary-row">4.1%</td>
-  <td class="ratio-cell summary-row">0.8%</td>
+  <td class="ratio-cell summary-row sep mtd">3.5%</td>
+  <td class="ratio-cell summary-row mtd">41.1%</td>
+  <td class="ratio-cell summary-row mtd">4.3%</td>
+  <td class="ratio-cell summary-row mtd">13.5%</td>
+  <td class="ratio-cell summary-row mtd">3.2%</td>
+  <td class="ratio-cell summary-row mtd">15.1%</td>
+  <td class="ratio-cell summary-row mtd">5.4%</td>
+  <td class="ratio-cell summary-row mtd">9.0%</td>
+  <td class="ratio-cell summary-row mtd">4.1%</td>
+  <td class="ratio-cell summary-row mtd">0.8%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心新塘汽车城店" data-merch="凌跑商贸">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心新塘汽车城店" data-merch="凌跑商贸" data-mm="3,15,3,4,2,8,0,6,1,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心新塘汽车城店</td>
@@ -2717,18 +2740,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">2.4%</td>
   <td class="lock-num sep">27</td>
   <td class="ratio-cell">64.3%</td>
-  <td class="ratio-cell sep">7.1%</td>
-  <td class="ratio-cell">35.7%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">9.5%</td>
-  <td class="ratio-cell">4.8%</td>
-  <td class="ratio-cell">19.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">2.4%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">7.1%</td>
+  <td class="ratio-cell mtd">35.7%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">9.5%</td>
+  <td class="ratio-cell mtd">4.8%</td>
+  <td class="ratio-cell mtd">19.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">2.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心白云机场路店" data-merch="凌跑商贸">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心白云机场路店" data-merch="凌跑商贸" data-mm="1,10,0,5,2,6,0,5,3,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心白云机场路店</td>
@@ -2744,18 +2767,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">9.4%</td>
   <td class="lock-num sep">21</td>
   <td class="ratio-cell">65.6%</td>
-  <td class="ratio-cell sep">3.1%</td>
-  <td class="ratio-cell">31.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">15.6%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">18.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">15.6%</td>
-  <td class="ratio-cell">9.4%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.1%</td>
+  <td class="ratio-cell mtd">31.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">15.6%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">18.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">15.6%</td>
+  <td class="ratio-cell mtd">9.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心广州南站店" data-merch="凌跑商贸">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心广州南站店" data-merch="凌跑商贸" data-mm="0,15,2,3,0,4,4,2,1,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心广州南站店</td>
@@ -2771,18 +2794,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.2%</td>
   <td class="lock-num sep">22</td>
   <td class="ratio-cell">71.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">48.4%</td>
-  <td class="ratio-cell">6.5%</td>
-  <td class="ratio-cell">9.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">12.9%</td>
-  <td class="ratio-cell">12.9%</td>
-  <td class="ratio-cell">6.5%</td>
-  <td class="ratio-cell">3.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">48.4%</td>
+  <td class="ratio-cell mtd">6.5%</td>
+  <td class="ratio-cell mtd">9.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">12.9%</td>
+  <td class="ratio-cell mtd">12.9%</td>
+  <td class="ratio-cell mtd">6.5%</td>
+  <td class="ratio-cell mtd">3.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心科学城店" data-merch="凌跑商贸">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心科学城店" data-merch="凌跑商贸" data-mm="0,12,1,2,3,6,2,4,1,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心科学城店</td>
@@ -2798,18 +2821,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.2%</td>
   <td class="lock-num sep">20</td>
   <td class="ratio-cell">64.5%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">38.7%</td>
-  <td class="ratio-cell">3.2%</td>
-  <td class="ratio-cell">6.5%</td>
-  <td class="ratio-cell">9.7%</td>
-  <td class="ratio-cell">19.4%</td>
-  <td class="ratio-cell">6.5%</td>
-  <td class="ratio-cell">12.9%</td>
-  <td class="ratio-cell">3.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">38.7%</td>
+  <td class="ratio-cell mtd">3.2%</td>
+  <td class="ratio-cell mtd">6.5%</td>
+  <td class="ratio-cell mtd">9.7%</td>
+  <td class="ratio-cell mtd">19.4%</td>
+  <td class="ratio-cell mtd">6.5%</td>
+  <td class="ratio-cell mtd">12.9%</td>
+  <td class="ratio-cell mtd">3.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心番禺大道店" data-merch="凌跑商贸">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心番禺大道店" data-merch="凌跑商贸" data-mm="2,13,0,6,1,3,1,2,2,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心番禺大道店</td>
@@ -2825,18 +2848,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.7%</td>
   <td class="lock-num sep">22</td>
   <td class="ratio-cell">73.3%</td>
-  <td class="ratio-cell sep">6.7%</td>
-  <td class="ratio-cell">43.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">3.3%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">3.3%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">6.7%</td>
+  <td class="ratio-cell mtd">43.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">3.3%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">3.3%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心天河汇彩路店" data-merch="凌跑商贸">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心天河汇彩路店" data-merch="凌跑商贸" data-mm="1,9,3,1,5,3,1,2,3,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心天河汇彩路店</td>
@@ -2852,18 +2875,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">10.7%</td>
   <td class="lock-num sep">13</td>
   <td class="ratio-cell">46.4%</td>
-  <td class="ratio-cell sep">3.6%</td>
-  <td class="ratio-cell">32.1%</td>
-  <td class="ratio-cell">10.7%</td>
-  <td class="ratio-cell">3.6%</td>
-  <td class="ratio-cell top5-model">17.9%</td>
-  <td class="ratio-cell">10.7%</td>
-  <td class="ratio-cell">3.6%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">10.7%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.6%</td>
+  <td class="ratio-cell mtd">32.1%</td>
+  <td class="ratio-cell mtd">10.7%</td>
+  <td class="ratio-cell mtd">3.6%</td>
+  <td class="ratio-cell top5-model mtd">17.9%</td>
+  <td class="ratio-cell mtd">10.7%</td>
+  <td class="ratio-cell mtd">3.6%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">10.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心天河广汕路店" data-merch="凌跑商贸">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心天河广汕路店" data-merch="凌跑商贸" data-mm="1,12,1,2,3,3,0,4,1,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心天河广汕路店</td>
@@ -2879,18 +2902,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.7%</td>
   <td class="lock-num sep">17</td>
   <td class="ratio-cell">63.0%</td>
-  <td class="ratio-cell sep">3.7%</td>
-  <td class="ratio-cell">44.4%</td>
-  <td class="ratio-cell">3.7%</td>
-  <td class="ratio-cell">7.4%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.8%</td>
-  <td class="ratio-cell">3.7%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.7%</td>
+  <td class="ratio-cell mtd">44.4%</td>
+  <td class="ratio-cell mtd">3.7%</td>
+  <td class="ratio-cell mtd">7.4%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.8%</td>
+  <td class="ratio-cell mtd">3.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心增城店" data-merch="凌跑商贸">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心增城店" data-merch="凌跑商贸" data-mm="0,9,0,5,4,4,1,1,0,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心增城店</td>
@@ -2906,18 +2929,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">18</td>
   <td class="ratio-cell">75.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">37.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.8%</td>
-  <td class="ratio-cell top5-model">16.7%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">37.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.8%</td>
+  <td class="ratio-cell top5-model mtd">16.7%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心金马汽车城店" data-merch="沃之瑞">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心金马汽车城店" data-merch="沃之瑞" data-mm="1,13,0,1,0,1,0,2,2,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心金马汽车城店</td>
@@ -2933,18 +2956,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">10.0%</td>
   <td class="lock-num sep">15</td>
   <td class="ratio-cell">75.0%</td>
-  <td class="ratio-cell sep">5.0%</td>
-  <td class="ratio-cell">65.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">5.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">5.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">5.0%</td>
+  <td class="ratio-cell mtd">65.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">5.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">5.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心花地大道店" data-merch="沃之瑞">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心花地大道店" data-merch="沃之瑞" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心花地大道店</td>
@@ -2960,18 +2983,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心亚运大道店" data-merch="美轮">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心亚运大道店" data-merch="美轮" data-mm="0,11,0,4,0,4,2,3,0,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心亚运大道店</td>
@@ -2987,18 +3010,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">19</td>
   <td class="ratio-cell">79.2%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">45.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">45.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心沥滘海心沙店" data-merch="美轮">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心沥滘海心沙店" data-merch="美轮" data-mm="0,8,1,5,0,4,1,0,0,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心沥滘海心沙店</td>
@@ -3014,18 +3037,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">17</td>
   <td class="ratio-cell">89.5%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">42.1%</td>
-  <td class="ratio-cell">5.3%</td>
-  <td class="ratio-cell">26.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">21.1%</td>
-  <td class="ratio-cell">5.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">42.1%</td>
+  <td class="ratio-cell mtd">5.3%</td>
+  <td class="ratio-cell mtd">26.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">21.1%</td>
+  <td class="ratio-cell mtd">5.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心美轮汽车园店" data-merch="美轮">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州零跑中心美轮汽车园店" data-merch="美轮" data-mm="0,9,0,1,0,3,0,0,2,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心美轮汽车园店</td>
@@ -3041,18 +3064,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">13.3%</td>
   <td class="lock-num sep">13</td>
   <td class="ratio-cell">86.7%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">60.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">60.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心番禺大北路店" data-merch="美轮">
+<tr class="data-row" data-mgr="黄伟峰" data-store="广州体验中心番禺大北路店" data-merch="美轮" data-mm="0,5,0,1,0,1,0,0,0,0">
   <td class="name-cell">黄伟峰</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心番禺大北路店</td>
@@ -3068,18 +3091,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">7</td>
   <td class="ratio-cell top5">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">71.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">71.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="广州零跑中心白云大道店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="广州零跑中心白云大道店" data-merch="骏延" data-mm="0,16,1,3,0,5,1,3,1,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心白云大道店</td>
@@ -3095,18 +3118,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.3%</td>
   <td class="lock-num sep">24</td>
   <td class="ratio-cell">80.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">53.3%</td>
-  <td class="ratio-cell">3.3%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">3.3%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">3.3%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">53.3%</td>
+  <td class="ratio-cell mtd">3.3%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">3.3%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">3.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="广州零跑中心花都建设路店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="广州零跑中心花都建设路店" data-merch="骏延" data-mm="1,21,1,0,1,0,1,1,1,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心花都建设路店</td>
@@ -3122,18 +3145,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.7%</td>
   <td class="lock-num sep">21</td>
   <td class="ratio-cell">77.8%</td>
-  <td class="ratio-cell sep">3.7%</td>
-  <td class="ratio-cell">77.8%</td>
-  <td class="ratio-cell">3.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">3.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">3.7%</td>
-  <td class="ratio-cell">3.7%</td>
-  <td class="ratio-cell">3.7%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.7%</td>
+  <td class="ratio-cell mtd">77.8%</td>
+  <td class="ratio-cell mtd">3.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">3.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">3.7%</td>
+  <td class="ratio-cell mtd">3.7%</td>
+  <td class="ratio-cell mtd">3.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="广州体验中心为正车城店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="广州体验中心为正车城店" data-merch="骏延" data-mm="1,5,0,2,0,4,0,2,0,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心为正车城店</td>
@@ -3149,18 +3172,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell">78.6%</td>
-  <td class="ratio-cell sep">7.1%</td>
-  <td class="ratio-cell">35.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">28.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">7.1%</td>
+  <td class="ratio-cell mtd">35.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">28.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="广州体验中心广花路店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="广州体验中心广花路店" data-merch="骏延" data-mm="1,10,0,1,0,1,0,0,0,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心广花路店</td>
@@ -3176,18 +3199,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">12</td>
   <td class="ratio-cell">92.3%</td>
-  <td class="ratio-cell sep">7.7%</td>
-  <td class="ratio-cell">76.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">7.7%</td>
+  <td class="ratio-cell mtd">76.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="广州体验中心花都北站店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="广州体验中心花都北站店" data-merch="骏延" data-mm="0,8,1,2,0,1,0,0,1,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心花都北站店</td>
@@ -3203,18 +3226,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">7.7%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell">84.6%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">61.5%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">61.5%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="汕头零跑中心金凤路店" data-merch="亿海">
+<tr class="data-row" data-mgr="熊俊晖" data-store="汕头零跑中心金凤路店" data-merch="亿海" data-mm="0,15,0,4,1,1,0,1,2,1">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">汕头</td>
   <td class="name-cell">汕头零跑中心金凤路店</td>
@@ -3230,18 +3253,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">12.0%</td>
   <td class="lock-num sep">20</td>
   <td class="ratio-cell">80.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">60.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.0%</td>
-  <td class="ratio-cell">4.0%</td>
-  <td class="ratio-cell">4.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">4.0%</td>
-  <td class="ratio-cell">8.0%</td>
-  <td class="ratio-cell">4.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">60.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.0%</td>
+  <td class="ratio-cell mtd">4.0%</td>
+  <td class="ratio-cell mtd">4.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">4.0%</td>
+  <td class="ratio-cell mtd">8.0%</td>
+  <td class="ratio-cell mtd">4.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="汕头体验中心广汕路店" data-merch="亿海">
+<tr class="data-row" data-mgr="熊俊晖" data-store="汕头体验中心广汕路店" data-merch="亿海" data-mm="0,4,1,0,0,1,0,2,1,1">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">汕头</td>
   <td class="name-cell">汕头体验中心广汕路店</td>
@@ -3257,18 +3280,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell top5">20.0%</td>
   <td class="lock-num sep">5</td>
   <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">40.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell top5-model">10.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">40.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell top5-model mtd">10.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="汕头零跑中心汕汾路店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="汕头零跑中心汕汾路店" data-merch="骏延" data-mm="1,11,0,1,0,9,2,3,2,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">汕头</td>
   <td class="name-cell">汕头零跑中心汕汾路店</td>
@@ -3284,18 +3307,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.9%</td>
   <td class="lock-num sep">21</td>
   <td class="ratio-cell">72.4%</td>
-  <td class="ratio-cell sep">3.4%</td>
-  <td class="ratio-cell">37.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">3.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">31.0%</td>
-  <td class="ratio-cell">6.9%</td>
-  <td class="ratio-cell">10.3%</td>
-  <td class="ratio-cell">6.9%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.4%</td>
+  <td class="ratio-cell mtd">37.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">3.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">31.0%</td>
+  <td class="ratio-cell mtd">6.9%</td>
+  <td class="ratio-cell mtd">10.3%</td>
+  <td class="ratio-cell mtd">6.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="汕头体验中心澄海店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="汕头体验中心澄海店" data-merch="骏延" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">汕头</td>
   <td class="name-cell">汕头体验中心澄海店</td>
@@ -3311,18 +3334,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="河源零跑中心河源大道店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="河源零跑中心河源大道店" data-merch="骏延" data-mm="1,12,2,6,0,5,2,2,1,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">河源</td>
   <td class="name-cell">河源零跑中心河源大道店</td>
@@ -3338,18 +3361,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.2%</td>
   <td class="lock-num sep">23</td>
   <td class="ratio-cell">74.2%</td>
-  <td class="ratio-cell sep">3.2%</td>
-  <td class="ratio-cell">38.7%</td>
-  <td class="ratio-cell">6.5%</td>
-  <td class="ratio-cell">19.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.1%</td>
-  <td class="ratio-cell">6.5%</td>
-  <td class="ratio-cell">6.5%</td>
-  <td class="ratio-cell">3.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.2%</td>
+  <td class="ratio-cell mtd">38.7%</td>
+  <td class="ratio-cell mtd">6.5%</td>
+  <td class="ratio-cell mtd">19.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.1%</td>
+  <td class="ratio-cell mtd">6.5%</td>
+  <td class="ratio-cell mtd">6.5%</td>
+  <td class="ratio-cell mtd">3.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="河源体验中心坚基购物中心店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="河源体验中心坚基购物中心店" data-merch="骏延" data-mm="0,5,0,1,0,5,0,0,0,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">河源</td>
   <td class="name-cell">河源体验中心坚基购物中心店</td>
@@ -3365,18 +3388,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell top5">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">45.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">9.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">45.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">45.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">9.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">45.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="清远零跑中心港鸿汽车城店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="清远零跑中心港鸿汽车城店" data-merch="骏延" data-mm="0,24,0,0,0,0,0,0,0,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">清远</td>
   <td class="name-cell">清远零跑中心港鸿汽车城店</td>
@@ -3392,18 +3415,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">24</td>
   <td class="ratio-cell top5">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell top5-model">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="清远体验中心奇晟汽车城店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="清远体验中心奇晟汽车城店" data-merch="骏延" data-mm="0,13,0,0,0,0,0,0,0,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">清远</td>
   <td class="name-cell">清远体验中心奇晟汽车城店</td>
@@ -3419,18 +3442,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">13</td>
   <td class="ratio-cell top5">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell top5-model">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="熊俊晖" data-store="清远体验中心英德店" data-merch="骏延">
+<tr class="data-row" data-mgr="熊俊晖" data-store="清远体验中心英德店" data-merch="骏延" data-mm="0,2,0,0,0,0,0,0,0,0">
   <td class="name-cell">熊俊晖</td>
   <td class="name-cell">清远</td>
   <td class="name-cell">清远体验中心英德店</td>
@@ -3446,18 +3469,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">2</td>
   <td class="ratio-cell top5">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell top5-model">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="罗捷" data-store="深圳零跑中心远望车城店" data-merch="新易腾">
+<tr class="data-row" data-mgr="罗捷" data-store="深圳零跑中心远望车城店" data-merch="新易腾" data-mm="2,10,1,4,0,6,3,3,1,1">
   <td class="name-cell">罗捷</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心远望车城店</td>
@@ -3473,18 +3496,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.5%</td>
   <td class="lock-num sep">20</td>
   <td class="ratio-cell">64.5%</td>
-  <td class="ratio-cell sep">6.5%</td>
-  <td class="ratio-cell">32.3%</td>
-  <td class="ratio-cell">3.2%</td>
-  <td class="ratio-cell">12.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">19.4%</td>
-  <td class="ratio-cell">9.7%</td>
-  <td class="ratio-cell">9.7%</td>
-  <td class="ratio-cell">3.2%</td>
-  <td class="ratio-cell">3.2%</td>
+  <td class="ratio-cell sep mtd">6.5%</td>
+  <td class="ratio-cell mtd">32.3%</td>
+  <td class="ratio-cell mtd">3.2%</td>
+  <td class="ratio-cell mtd">12.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">19.4%</td>
+  <td class="ratio-cell mtd">9.7%</td>
+  <td class="ratio-cell mtd">9.7%</td>
+  <td class="ratio-cell mtd">3.2%</td>
+  <td class="ratio-cell mtd">3.2%</td>
 </tr>
-<tr class="data-row" data-mgr="罗捷" data-store="深圳零跑中心光明车城店" data-merch="新易腾">
+<tr class="data-row" data-mgr="罗捷" data-store="深圳零跑中心光明车城店" data-merch="新易腾" data-mm="0,13,2,2,0,4,0,6,3,0">
   <td class="name-cell">罗捷</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心光明车城店</td>
@@ -3500,18 +3523,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">10.0%</td>
   <td class="lock-num sep">19</td>
   <td class="ratio-cell">63.3%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">43.3%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">43.3%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="罗捷" data-store="深圳零跑中心万国城旗舰店" data-merch="新易腾">
+<tr class="data-row" data-mgr="罗捷" data-store="深圳零跑中心万国城旗舰店" data-merch="新易腾" data-mm="4,6,0,1,3,6,2,3,4,0">
   <td class="name-cell">罗捷</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心万国城旗舰店</td>
@@ -3527,18 +3550,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">13.8%</td>
   <td class="lock-num sep">13</td>
   <td class="ratio-cell">44.8%</td>
-  <td class="ratio-cell sep">13.8%</td>
-  <td class="ratio-cell">20.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">3.4%</td>
-  <td class="ratio-cell">10.3%</td>
-  <td class="ratio-cell">20.7%</td>
-  <td class="ratio-cell">6.9%</td>
-  <td class="ratio-cell">10.3%</td>
-  <td class="ratio-cell top5-model">13.8%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">13.8%</td>
+  <td class="ratio-cell mtd">20.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">3.4%</td>
+  <td class="ratio-cell mtd">10.3%</td>
+  <td class="ratio-cell mtd">20.7%</td>
+  <td class="ratio-cell mtd">6.9%</td>
+  <td class="ratio-cell mtd">10.3%</td>
+  <td class="ratio-cell top5-model mtd">13.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="罗捷" data-store="深圳零跑中心宝运达汽车城店" data-merch="新易腾">
+<tr class="data-row" data-mgr="罗捷" data-store="深圳零跑中心宝运达汽车城店" data-merch="新易腾" data-mm="1,16,1,2,0,3,2,3,0,0">
   <td class="name-cell">罗捷</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心宝运达汽车城店</td>
@@ -3554,18 +3577,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">21</td>
   <td class="ratio-cell">75.0%</td>
-  <td class="ratio-cell sep">3.6%</td>
-  <td class="ratio-cell">57.1%</td>
-  <td class="ratio-cell">3.6%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">10.7%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">10.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.6%</td>
+  <td class="ratio-cell mtd">57.1%</td>
+  <td class="ratio-cell mtd">3.6%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">10.7%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">10.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="罗捷" data-store="深圳体验中心龙华中心店" data-merch="新易腾">
+<tr class="data-row" data-mgr="罗捷" data-store="深圳体验中心龙华中心店" data-merch="新易腾" data-mm="0,5,1,4,0,5,1,4,1,1">
   <td class="name-cell">罗捷</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心龙华中心店</td>
@@ -3581,18 +3604,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">9.1%</td>
   <td class="lock-num sep">14</td>
   <td class="ratio-cell">63.6%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">22.7%</td>
-  <td class="ratio-cell">4.5%</td>
-  <td class="ratio-cell">18.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">22.7%</td>
-  <td class="ratio-cell">4.5%</td>
-  <td class="ratio-cell">18.2%</td>
-  <td class="ratio-cell">4.5%</td>
-  <td class="ratio-cell">4.5%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">22.7%</td>
+  <td class="ratio-cell mtd">4.5%</td>
+  <td class="ratio-cell mtd">18.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">22.7%</td>
+  <td class="ratio-cell mtd">4.5%</td>
+  <td class="ratio-cell mtd">18.2%</td>
+  <td class="ratio-cell mtd">4.5%</td>
+  <td class="ratio-cell mtd">4.5%</td>
 </tr>
-<tr class="data-row" data-mgr="罗捷" data-store="深圳体验中心杰鹏车城店" data-merch="新易腾">
+<tr class="data-row" data-mgr="罗捷" data-store="深圳体验中心杰鹏车城店" data-merch="新易腾" data-mm="0,8,2,0,0,0,1,3,1,0">
   <td class="name-cell">罗捷</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心杰鹏车城店</td>
@@ -3608,18 +3631,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.7%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">53.3%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">53.3%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">53.3%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="罗捷" data-store="深圳体验中心观澜湖新城店" data-merch="新易腾">
+<tr class="data-row" data-mgr="罗捷" data-store="深圳体验中心观澜湖新城店" data-merch="新易腾" data-mm="1,2,0,1,0,1,0,1,0,0">
   <td class="name-cell">罗捷</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心观澜湖新城店</td>
@@ -3635,18 +3658,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">4</td>
   <td class="ratio-cell">66.7%</td>
-  <td class="ratio-cell sep">16.7%</td>
-  <td class="ratio-cell">33.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">16.7%</td>
+  <td class="ratio-cell mtd">33.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="郭天文" data-store="深圳零跑中心百世汽车城店" data-merch="九兴">
+<tr class="data-row" data-mgr="郭天文" data-store="深圳零跑中心百世汽车城店" data-merch="九兴" data-mm="0,7,1,2,0,2,3,5,5,0">
   <td class="name-cell">郭天文</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心百世汽车城店</td>
@@ -3662,18 +3685,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell top5">20.0%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell">44.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">28.0%</td>
-  <td class="ratio-cell">4.0%</td>
-  <td class="ratio-cell">8.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">8.0%</td>
-  <td class="ratio-cell">12.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell top5-model">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">28.0%</td>
+  <td class="ratio-cell mtd">4.0%</td>
+  <td class="ratio-cell mtd">8.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">8.0%</td>
+  <td class="ratio-cell mtd">12.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell top5-model mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="郭天文" data-store="深圳体验中心龙岗信义店" data-merch="九兴">
+<tr class="data-row" data-mgr="郭天文" data-store="深圳体验中心龙岗信义店" data-merch="九兴" data-mm="0,4,0,0,1,3,0,0,1,0">
   <td class="name-cell">郭天文</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心龙岗信义店</td>
@@ -3689,18 +3712,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">11.1%</td>
   <td class="lock-num sep">7</td>
   <td class="ratio-cell">77.8%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">44.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell top5-model">33.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">44.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell top5-model mtd">33.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="郭天文" data-store="深圳体验中心锦龙大道店" data-merch="九兴">
+<tr class="data-row" data-mgr="郭天文" data-store="深圳体验中心锦龙大道店" data-merch="九兴" data-mm="1,2,0,0,0,1,0,0,0,0">
   <td class="name-cell">郭天文</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心锦龙大道店</td>
@@ -3716,18 +3739,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">3</td>
   <td class="ratio-cell">75.0%</td>
-  <td class="ratio-cell top5-model sep">25.0%</td>
-  <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell top5-model sep mtd">25.0%</td>
+  <td class="ratio-cell mtd">50.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="郭天文" data-store="深圳体验中心启创汽车城店" data-merch="九兴">
+<tr class="data-row" data-mgr="郭天文" data-store="深圳体验中心启创汽车城店" data-merch="九兴" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">郭天文</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心启创汽车城店</td>
@@ -3743,18 +3766,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="郭天文" data-store="深圳零跑中心南山嘉进隆店" data-merch="标特">
+<tr class="data-row" data-mgr="郭天文" data-store="深圳零跑中心南山嘉进隆店" data-merch="标特" data-mm="1,1,2,4,0,7,1,3,1,3">
   <td class="name-cell">郭天文</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心南山嘉进隆店</td>
@@ -3770,18 +3793,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell top5">17.4%</td>
   <td class="lock-num sep">12</td>
   <td class="ratio-cell">52.2%</td>
-  <td class="ratio-cell sep">4.3%</td>
-  <td class="ratio-cell">4.3%</td>
-  <td class="ratio-cell">8.7%</td>
-  <td class="ratio-cell">17.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">30.4%</td>
-  <td class="ratio-cell">4.3%</td>
-  <td class="ratio-cell">13.0%</td>
-  <td class="ratio-cell">4.3%</td>
-  <td class="ratio-cell top5-model">13.0%</td>
+  <td class="ratio-cell sep mtd">4.3%</td>
+  <td class="ratio-cell mtd">4.3%</td>
+  <td class="ratio-cell mtd">8.7%</td>
+  <td class="ratio-cell mtd">17.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">30.4%</td>
+  <td class="ratio-cell mtd">4.3%</td>
+  <td class="ratio-cell mtd">13.0%</td>
+  <td class="ratio-cell mtd">4.3%</td>
+  <td class="ratio-cell top5-model mtd">13.0%</td>
 </tr>
-<tr class="data-row" data-mgr="郭天文" data-store="深圳体验中心福田瑞鹏达店" data-merch="标特">
+<tr class="data-row" data-mgr="郭天文" data-store="深圳体验中心福田瑞鹏达店" data-merch="标特" data-mm="0,4,1,4,0,3,0,1,0,1">
   <td class="name-cell">郭天文</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心福田瑞鹏达店</td>
@@ -3797,18 +3820,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">7.1%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell">78.6%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">28.6%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">28.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">21.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.1%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">28.6%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">28.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">21.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.1%</td>
 </tr>
-<tr class="data-row" data-mgr="郭天文" data-store="深圳零跑中心芙蓉路店" data-merch="标特">
+<tr class="data-row" data-mgr="郭天文" data-store="深圳零跑中心芙蓉路店" data-merch="标特" data-mm="0,2,3,1,0,0,2,1,3,0">
   <td class="name-cell">郭天文</td>
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心芙蓉路店</td>
@@ -3824,18 +3847,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell top5">25.0%</td>
   <td class="lock-num sep">3</td>
   <td class="ratio-cell bot5">25.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell top5-model">25.0%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">16.7%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell top5-model">25.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell top5-model mtd">25.0%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">16.7%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell top5-model mtd">25.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心禅城国际汽车城店" data-merch="利泰">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心禅城国际汽车城店" data-merch="利泰" data-mm="1,7,1,6,1,9,2,4,3,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心禅城国际汽车城店</td>
@@ -3851,18 +3874,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">8.8%</td>
   <td class="lock-num sep">22</td>
   <td class="ratio-cell">64.7%</td>
-  <td class="ratio-cell sep">2.9%</td>
-  <td class="ratio-cell">20.6%</td>
-  <td class="ratio-cell">2.9%</td>
-  <td class="ratio-cell">17.6%</td>
-  <td class="ratio-cell">2.9%</td>
-  <td class="ratio-cell">26.5%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">11.8%</td>
-  <td class="ratio-cell">8.8%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">2.9%</td>
+  <td class="ratio-cell mtd">20.6%</td>
+  <td class="ratio-cell mtd">2.9%</td>
+  <td class="ratio-cell mtd">17.6%</td>
+  <td class="ratio-cell mtd">2.9%</td>
+  <td class="ratio-cell mtd">26.5%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">11.8%</td>
+  <td class="ratio-cell mtd">8.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心南庄汽车城店" data-merch="利泰">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心南庄汽车城店" data-merch="利泰" data-mm="3,7,0,5,1,1,1,5,1,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心南庄汽车城店</td>
@@ -3878,18 +3901,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">4.2%</td>
   <td class="lock-num sep">13</td>
   <td class="ratio-cell">54.2%</td>
-  <td class="ratio-cell sep">12.5%</td>
-  <td class="ratio-cell">29.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.8%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">20.8%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">12.5%</td>
+  <td class="ratio-cell mtd">29.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.8%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">20.8%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心桂澜路店" data-merch="利泰">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心桂澜路店" data-merch="利泰" data-mm="1,15,1,0,0,2,1,3,1,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心桂澜路店</td>
@@ -3905,18 +3928,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">4.2%</td>
   <td class="lock-num sep">17</td>
   <td class="ratio-cell">70.8%</td>
-  <td class="ratio-cell sep">4.2%</td>
-  <td class="ratio-cell">62.5%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">4.2%</td>
+  <td class="ratio-cell mtd">62.5%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山体验中心佛平四路店" data-merch="利泰">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山体验中心佛平四路店" data-merch="利泰" data-mm="1,6,0,0,0,0,0,0,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心佛平四路店</td>
@@ -3932,18 +3955,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">6</td>
   <td class="ratio-cell">85.7%</td>
-  <td class="ratio-cell sep">14.3%</td>
-  <td class="ratio-cell">85.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">14.3%</td>
+  <td class="ratio-cell mtd">85.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心海八路汽车城店" data-merch="华跃">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心海八路汽车城店" data-merch="华跃" data-mm="1,20,2,2,0,5,1,1,2,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心海八路汽车城店</td>
@@ -3959,18 +3982,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">5.9%</td>
   <td class="lock-num sep">27</td>
   <td class="ratio-cell">79.4%</td>
-  <td class="ratio-cell sep">2.9%</td>
-  <td class="ratio-cell">58.8%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.7%</td>
-  <td class="ratio-cell">2.9%</td>
-  <td class="ratio-cell">2.9%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">2.9%</td>
+  <td class="ratio-cell mtd">58.8%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.7%</td>
+  <td class="ratio-cell mtd">2.9%</td>
+  <td class="ratio-cell mtd">2.9%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山体验中心海八西路店" data-merch="华跃">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山体验中心海八西路店" data-merch="华跃" data-mm="0,16,1,3,0,1,0,1,2,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心海八西路店</td>
@@ -3986,18 +4009,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">8.3%</td>
   <td class="lock-num sep">20</td>
   <td class="ratio-cell">83.3%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">66.7%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">66.7%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山体验中心广佛汽车城店" data-merch="华跃">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山体验中心广佛汽车城店" data-merch="华跃" data-mm="0,0,0,1,0,0,0,1,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心广佛汽车城店</td>
@@ -4013,18 +4036,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">50.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">50.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">50.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">50.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心三水友好车城店" data-merch="智迅">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心三水友好车城店" data-merch="智迅" data-mm="1,13,2,4,0,2,2,1,1,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心三水友好车城店</td>
@@ -4040,18 +4063,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.8%</td>
   <td class="lock-num sep">19</td>
   <td class="ratio-cell">73.1%</td>
-  <td class="ratio-cell sep">3.8%</td>
-  <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">3.8%</td>
-  <td class="ratio-cell">3.8%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.8%</td>
+  <td class="ratio-cell mtd">50.0%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">3.8%</td>
+  <td class="ratio-cell mtd">3.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心狮山汽车城店" data-merch="智迅">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山零跑中心狮山汽车城店" data-merch="智迅" data-mm="0,13,0,0,0,0,0,0,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心狮山汽车城店</td>
@@ -4067,18 +4090,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">13</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell top5-model">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="佛山体验中心高明荷香路店" data-merch="智迅">
+<tr class="data-row" data-mgr="余子恩" data-store="佛山体验中心高明荷香路店" data-merch="智迅" data-mm="1,0,0,3,0,0,0,1,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心高明荷香路店</td>
@@ -4094,18 +4117,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">3</td>
   <td class="ratio-cell">60.0%</td>
-  <td class="ratio-cell top5-model sep">20.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">60.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell top5-model sep mtd">20.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">60.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="江门体验中心陈宜禧路店" data-merch="利泰">
+<tr class="data-row" data-mgr="余子恩" data-store="江门体验中心陈宜禧路店" data-merch="利泰" data-mm="1,1,0,1,0,1,1,1,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">江门</td>
   <td class="name-cell">江门体验中心陈宜禧路店</td>
@@ -4121,18 +4144,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">3</td>
   <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell sep">16.7%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">16.7%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="江门零跑中心冈州大道店" data-merch="智迅">
+<tr class="data-row" data-mgr="余子恩" data-store="江门零跑中心冈州大道店" data-merch="智迅" data-mm="0,8,0,3,1,6,5,5,1,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">江门</td>
   <td class="name-cell">江门零跑中心冈州大道店</td>
@@ -4148,18 +4171,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.4%</td>
   <td class="lock-num sep">17</td>
   <td class="ratio-cell">58.6%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">27.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">10.3%</td>
-  <td class="ratio-cell">3.4%</td>
-  <td class="ratio-cell">20.7%</td>
-  <td class="ratio-cell top5-model">17.2%</td>
-  <td class="ratio-cell">17.2%</td>
-  <td class="ratio-cell">3.4%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">27.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">10.3%</td>
+  <td class="ratio-cell mtd">3.4%</td>
+  <td class="ratio-cell mtd">20.7%</td>
+  <td class="ratio-cell top5-model mtd">17.2%</td>
+  <td class="ratio-cell mtd">17.2%</td>
+  <td class="ratio-cell mtd">3.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="江门体验中心开平车城店" data-merch="智迅">
+<tr class="data-row" data-mgr="余子恩" data-store="江门体验中心开平车城店" data-merch="智迅" data-mm="0,3,2,5,0,3,1,1,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">江门</td>
   <td class="name-cell">江门体验中心开平车城店</td>
@@ -4175,18 +4198,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell">73.3%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell">33.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell mtd">33.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="江门体验中心蓬江华鸿店" data-merch="智迅">
+<tr class="data-row" data-mgr="余子恩" data-store="江门体验中心蓬江华鸿店" data-merch="智迅" data-mm="0,1,0,0,0,0,0,1,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">江门</td>
   <td class="name-cell">江门体验中心蓬江华鸿店</td>
@@ -4202,18 +4225,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">50.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">50.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">50.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="江门零跑中心建设路店" data-merch="磐鼎">
+<tr class="data-row" data-mgr="余子恩" data-store="江门零跑中心建设路店" data-merch="磐鼎" data-mm="0,11,0,1,1,0,0,1,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">江门</td>
   <td class="name-cell">江门零跑中心建设路店</td>
@@ -4229,18 +4252,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">12</td>
   <td class="ratio-cell">85.7%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">78.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">78.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="江门体验中心鹤山店" data-merch="磐鼎">
+<tr class="data-row" data-mgr="余子恩" data-store="江门体验中心鹤山店" data-merch="磐鼎" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">江门</td>
   <td class="name-cell">江门体验中心鹤山店</td>
@@ -4256,18 +4279,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="韶关体验中心浈江大道店" data-merch="利泰">
+<tr class="data-row" data-mgr="余子恩" data-store="韶关体验中心浈江大道店" data-merch="利泰" data-mm="0,4,0,1,1,3,1,3,1,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">韶关</td>
   <td class="name-cell">韶关体验中心浈江大道店</td>
@@ -4283,18 +4306,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">7.1%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">57.1%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">28.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">21.4%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell top5-model">21.4%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">28.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">21.4%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell top5-model mtd">21.4%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="余子恩" data-store="韶关零跑中心沐溪大道店" data-merch="利泰">
+<tr class="data-row" data-mgr="余子恩" data-store="韶关零跑中心沐溪大道店" data-merch="利泰" data-mm="1,4,1,3,2,1,0,0,0,0">
   <td class="name-cell">余子恩</td>
   <td class="name-cell">韶关</td>
   <td class="name-cell">韶关零跑中心沐溪大道店</td>
@@ -4310,18 +4333,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">66.7%</td>
-  <td class="ratio-cell sep">8.3%</td>
-  <td class="ratio-cell">33.3%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell top5-model">16.7%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">8.3%</td>
+  <td class="ratio-cell mtd">33.3%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell top5-model mtd">16.7%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="高峰强" data-store="佛山零跑中心顺德大良车城店" data-merch="未来智选">
+<tr class="data-row" data-mgr="高峰强" data-store="佛山零跑中心顺德大良车城店" data-merch="未来智选" data-mm="3,12,2,6,5,9,3,5,1,0">
   <td class="name-cell">高峰强</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心顺德大良车城店</td>
@@ -4337,18 +4360,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">2.2%</td>
   <td class="lock-num sep">27</td>
   <td class="ratio-cell">58.7%</td>
-  <td class="ratio-cell sep">6.5%</td>
-  <td class="ratio-cell">26.1%</td>
-  <td class="ratio-cell">4.3%</td>
-  <td class="ratio-cell">13.0%</td>
-  <td class="ratio-cell">10.9%</td>
-  <td class="ratio-cell">19.6%</td>
-  <td class="ratio-cell">6.5%</td>
-  <td class="ratio-cell">10.9%</td>
-  <td class="ratio-cell">2.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">6.5%</td>
+  <td class="ratio-cell mtd">26.1%</td>
+  <td class="ratio-cell mtd">4.3%</td>
+  <td class="ratio-cell mtd">13.0%</td>
+  <td class="ratio-cell mtd">10.9%</td>
+  <td class="ratio-cell mtd">19.6%</td>
+  <td class="ratio-cell mtd">6.5%</td>
+  <td class="ratio-cell mtd">10.9%</td>
+  <td class="ratio-cell mtd">2.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="高峰强" data-store="佛山体验中心容桂车城店" data-merch="未来智选">
+<tr class="data-row" data-mgr="高峰强" data-store="佛山体验中心容桂车城店" data-merch="未来智选" data-mm="1,3,1,3,1,2,1,3,1,0">
   <td class="name-cell">高峰强</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心容桂车城店</td>
@@ -4364,18 +4387,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.2%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell sep">6.2%</td>
-  <td class="ratio-cell">18.8%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">18.8%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">18.8%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">6.2%</td>
+  <td class="ratio-cell mtd">18.8%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">18.8%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">18.8%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="高峰强" data-store="佛山体验中心北滘车城店" data-merch="未来智选">
+<tr class="data-row" data-mgr="高峰强" data-store="佛山体验中心北滘车城店" data-merch="未来智选" data-mm="0,2,1,1,2,3,1,2,0,1">
   <td class="name-cell">高峰强</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心北滘车城店</td>
@@ -4391,18 +4414,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">7.7%</td>
   <td class="lock-num sep">6</td>
   <td class="ratio-cell">46.2%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell top5-model">15.4%</td>
-  <td class="ratio-cell">23.1%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.7%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell top5-model mtd">15.4%</td>
+  <td class="ratio-cell mtd">23.1%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.7%</td>
 </tr>
-<tr class="data-row" data-mgr="高峰强" data-store="佛山体验中心龙江店" data-merch="未来智选">
+<tr class="data-row" data-mgr="高峰强" data-store="佛山体验中心龙江店" data-merch="未来智选" data-mm="0,1,0,0,0,0,0,0,0,0">
   <td class="name-cell">高峰强</td>
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心龙江店</td>
@@ -4418,18 +4441,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell top5-model">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心莞太路店" data-merch="一维">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心莞太路店" data-merch="一维" data-mm="0,11,1,8,1,4,0,2,3,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心莞太路店</td>
@@ -4445,18 +4468,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">10.0%</td>
   <td class="lock-num sep">23</td>
   <td class="ratio-cell">76.7%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">36.7%</td>
-  <td class="ratio-cell">3.3%</td>
-  <td class="ratio-cell">26.7%</td>
-  <td class="ratio-cell">3.3%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">36.7%</td>
+  <td class="ratio-cell mtd">3.3%</td>
+  <td class="ratio-cell mtd">26.7%</td>
+  <td class="ratio-cell mtd">3.3%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心大岭山镇店" data-merch="一维">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心大岭山镇店" data-merch="一维" data-mm="0,6,1,1,0,2,0,0,0,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心大岭山镇店</td>
@@ -4472,18 +4495,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">9</td>
   <td class="ratio-cell">90.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">60.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">60.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心长安振安东路店" data-merch="一维">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心长安振安东路店" data-merch="一维" data-mm="0,2,3,1,0,3,1,0,0,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心长安振安东路店</td>
@@ -4499,18 +4522,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">6</td>
   <td class="ratio-cell">60.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell top5-model">30.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">30.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell top5-model mtd">30.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">30.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心厚街店" data-merch="一维">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心厚街店" data-merch="一维" data-mm="0,3,0,1,0,1,1,0,0,1">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心厚街店</td>
@@ -4526,18 +4549,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">14.3%</td>
   <td class="lock-num sep">5</td>
   <td class="ratio-cell">71.4%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">42.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">14.3%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">42.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">14.3%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心寮步车城店" data-merch="东富">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心寮步车城店" data-merch="东富" data-mm="0,14,1,5,2,6,1,2,2,1">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心寮步车城店</td>
@@ -4553,18 +4576,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">8.8%</td>
   <td class="lock-num sep">25</td>
   <td class="ratio-cell">73.5%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">41.2%</td>
-  <td class="ratio-cell">2.9%</td>
-  <td class="ratio-cell">14.7%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">17.6%</td>
-  <td class="ratio-cell">2.9%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">2.9%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">41.2%</td>
+  <td class="ratio-cell mtd">2.9%</td>
+  <td class="ratio-cell mtd">14.7%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">17.6%</td>
+  <td class="ratio-cell mtd">2.9%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">2.9%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心常朗路店" data-merch="东朋">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心常朗路店" data-merch="东朋" data-mm="2,6,2,5,1,9,4,1,2,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心常朗路店</td>
@@ -4580,18 +4603,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.2%</td>
   <td class="lock-num sep">20</td>
   <td class="ratio-cell">62.5%</td>
-  <td class="ratio-cell sep">6.2%</td>
-  <td class="ratio-cell">18.8%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">15.6%</td>
-  <td class="ratio-cell">3.1%</td>
-  <td class="ratio-cell">28.1%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">3.1%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">6.2%</td>
+  <td class="ratio-cell mtd">18.8%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">15.6%</td>
+  <td class="ratio-cell mtd">3.1%</td>
+  <td class="ratio-cell mtd">28.1%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">3.1%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心东城店" data-merch="东朋">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心东城店" data-merch="东朋" data-mm="0,16,1,0,0,4,2,3,0,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心东城店</td>
@@ -4607,18 +4630,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">20</td>
   <td class="ratio-cell">76.9%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">61.5%</td>
-  <td class="ratio-cell">3.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">11.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">61.5%</td>
+  <td class="ratio-cell mtd">3.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">11.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心石排大道店" data-merch="东朋">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心石排大道店" data-merch="东朋" data-mm="0,7,0,2,0,6,1,4,0,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心石排大道店</td>
@@ -4634,18 +4657,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">15</td>
   <td class="ratio-cell">75.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">35.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">30.0%</td>
-  <td class="ratio-cell">5.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">35.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">30.0%</td>
+  <td class="ratio-cell mtd">5.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心松山湖店" data-merch="东朋">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心松山湖店" data-merch="东朋" data-mm="0,4,2,0,0,2,1,1,2,1">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心松山湖店</td>
@@ -4661,18 +4684,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell top5">23.1%</td>
   <td class="lock-num sep">6</td>
   <td class="ratio-cell">46.2%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">30.8%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell top5-model">15.4%</td>
-  <td class="ratio-cell">7.7%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">30.8%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell top5-model mtd">15.4%</td>
+  <td class="ratio-cell mtd">7.7%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心企石店" data-merch="东朋">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心企石店" data-merch="东朋" data-mm="1,1,0,0,0,0,2,3,0,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心企石店</td>
@@ -4688,18 +4711,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell bot5">14.3%</td>
-  <td class="ratio-cell sep">14.3%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">28.6%</td>
-  <td class="ratio-cell top5-model">42.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">14.3%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">28.6%</td>
+  <td class="ratio-cell top5-model mtd">42.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心高胜车城店" data-merch="东朋">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心高胜车城店" data-merch="东朋" data-mm="0,1,0,0,0,0,0,0,0,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心高胜车城店</td>
@@ -4715,18 +4738,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心虎门车城店" data-merch="华跃">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心虎门车城店" data-merch="华跃" data-mm="1,7,1,6,1,3,0,0,1,2">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心虎门车城店</td>
@@ -4742,18 +4765,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">13.6%</td>
   <td class="lock-num sep">16</td>
   <td class="ratio-cell">72.7%</td>
-  <td class="ratio-cell sep">4.5%</td>
-  <td class="ratio-cell">31.8%</td>
-  <td class="ratio-cell">4.5%</td>
-  <td class="ratio-cell">27.3%</td>
-  <td class="ratio-cell">4.5%</td>
-  <td class="ratio-cell">13.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">4.5%</td>
-  <td class="ratio-cell top5-model">9.1%</td>
+  <td class="ratio-cell sep mtd">4.5%</td>
+  <td class="ratio-cell mtd">31.8%</td>
+  <td class="ratio-cell mtd">4.5%</td>
+  <td class="ratio-cell mtd">27.3%</td>
+  <td class="ratio-cell mtd">4.5%</td>
+  <td class="ratio-cell mtd">13.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">4.5%</td>
+  <td class="ratio-cell top5-model mtd">9.1%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心高埗车城店" data-merch="骏威">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞体验中心高埗车城店" data-merch="骏威" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心高埗车城店</td>
@@ -4769,18 +4792,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心塘厦车城店" data-merch="骏威">
+<tr class="data-row" data-mgr="方任昊" data-store="东莞零跑中心塘厦车城店" data-merch="骏威" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">方任昊</td>
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心塘厦车城店</td>
@@ -4796,18 +4819,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="中山零跑中心小榄菊城大道店" data-merch="智盈">
+<tr class="data-row" data-mgr="秦启超" data-store="中山零跑中心小榄菊城大道店" data-merch="智盈" data-mm="2,10,0,3,1,3,2,2,1,0">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">中山</td>
   <td class="name-cell">中山零跑中心小榄菊城大道店</td>
@@ -4823,18 +4846,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">4.2%</td>
   <td class="lock-num sep">16</td>
   <td class="ratio-cell">66.7%</td>
-  <td class="ratio-cell sep">8.3%</td>
-  <td class="ratio-cell">41.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">8.3%</td>
+  <td class="ratio-cell mtd">41.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="中山体验中心三乡店" data-merch="智盈">
+<tr class="data-row" data-mgr="秦启超" data-store="中山体验中心三乡店" data-merch="智盈" data-mm="0,1,0,0,0,0,0,0,0,0">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">中山</td>
   <td class="name-cell">中山体验中心三乡店</td>
@@ -4850,18 +4873,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="中山零跑中心彩虹大道店" data-merch="美轮">
+<tr class="data-row" data-mgr="秦启超" data-store="中山零跑中心彩虹大道店" data-merch="美轮" data-mm="0,13,1,2,3,0,1,3,0,0">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">中山</td>
   <td class="name-cell">中山零跑中心彩虹大道店</td>
@@ -4877,18 +4900,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">15</td>
   <td class="ratio-cell">65.2%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">56.5%</td>
-  <td class="ratio-cell">4.3%</td>
-  <td class="ratio-cell">8.7%</td>
-  <td class="ratio-cell">13.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">4.3%</td>
-  <td class="ratio-cell">13.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">56.5%</td>
+  <td class="ratio-cell mtd">4.3%</td>
+  <td class="ratio-cell mtd">8.7%</td>
+  <td class="ratio-cell mtd">13.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">4.3%</td>
+  <td class="ratio-cell mtd">13.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="中山零跑中心中山六路店" data-merch="美轮">
+<tr class="data-row" data-mgr="秦启超" data-store="中山零跑中心中山六路店" data-merch="美轮" data-mm="0,8,0,7,0,3,0,1,0,0">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">中山</td>
   <td class="name-cell">中山零跑中心中山六路店</td>
@@ -4904,18 +4927,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">18</td>
   <td class="ratio-cell">94.7%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">42.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">36.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">15.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">5.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">42.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">36.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">15.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">5.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="中山体验中心港口店" data-merch="美轮">
+<tr class="data-row" data-mgr="秦启超" data-store="中山体验中心港口店" data-merch="美轮" data-mm="0,5,0,3,1,0,0,1,1,0">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">中山</td>
   <td class="name-cell">中山体验中心港口店</td>
@@ -4931,18 +4954,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">9.1%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">72.7%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">45.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">27.3%</td>
-  <td class="ratio-cell">9.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">9.1%</td>
-  <td class="ratio-cell">9.1%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">45.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">27.3%</td>
+  <td class="ratio-cell mtd">9.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">9.1%</td>
+  <td class="ratio-cell mtd">9.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="中山零跑中心金宁汽车城店" data-merch="金盈">
+<tr class="data-row" data-mgr="秦启超" data-store="中山零跑中心金宁汽车城店" data-merch="金盈" data-mm="0,3,2,1,0,2,1,1,2,0">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">中山</td>
   <td class="name-cell">中山零跑中心金宁汽车城店</td>
@@ -4958,18 +4981,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">16.7%</td>
   <td class="lock-num sep">6</td>
   <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell top5-model">16.7%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">16.7%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell top5-model">16.7%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell top5-model mtd">16.7%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.7%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell top5-model mtd">16.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="珠海零跑中心上冲车城店" data-merch="申裕">
+<tr class="data-row" data-mgr="秦启超" data-store="珠海零跑中心上冲车城店" data-merch="申裕" data-mm="3,1,1,0,7,2,0,1,1,1">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">珠海</td>
   <td class="name-cell">珠海零跑中心上冲车城店</td>
@@ -4985,18 +5008,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">11.8%</td>
   <td class="lock-num sep">3</td>
   <td class="ratio-cell bot5">17.6%</td>
-  <td class="ratio-cell sep">17.6%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">41.2%</td>
-  <td class="ratio-cell">11.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">5.9%</td>
-  <td class="ratio-cell">5.9%</td>
+  <td class="ratio-cell sep mtd">17.6%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">41.2%</td>
+  <td class="ratio-cell mtd">11.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">5.9%</td>
+  <td class="ratio-cell mtd">5.9%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="珠海体验中心西部车城店" data-merch="申裕">
+<tr class="data-row" data-mgr="秦启超" data-store="珠海体验中心西部车城店" data-merch="申裕" data-mm="3,7,3,0,0,1,0,1,0,0">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">珠海</td>
   <td class="name-cell">珠海体验中心西部车城店</td>
@@ -5012,18 +5035,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">53.3%</td>
-  <td class="ratio-cell top5-model sep">20.0%</td>
-  <td class="ratio-cell">46.7%</td>
-  <td class="ratio-cell top5-model">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell top5-model sep mtd">20.0%</td>
+  <td class="ratio-cell mtd">46.7%</td>
+  <td class="ratio-cell top5-model mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="珠海体验中心美满车城店" data-merch="达田">
+<tr class="data-row" data-mgr="秦启超" data-store="珠海体验中心美满车城店" data-merch="达田" data-mm="0,7,0,1,2,4,0,1,0,1">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">珠海</td>
   <td class="name-cell">珠海体验中心美满车城店</td>
@@ -5039,18 +5062,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.2%</td>
   <td class="lock-num sep">12</td>
   <td class="ratio-cell">75.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">43.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.2%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">43.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.2%</td>
 </tr>
-<tr class="data-row" data-mgr="秦启超" data-store="珠海零跑中心南屏珠海大道店" data-merch="达田">
+<tr class="data-row" data-mgr="秦启超" data-store="珠海零跑中心南屏珠海大道店" data-merch="达田" data-mm="0,7,0,3,1,1,1,3,0,0">
   <td class="name-cell">秦启超</td>
   <td class="name-cell">珠海</td>
   <td class="name-cell">珠海零跑中心南屏珠海大道店</td>
@@ -5066,18 +5089,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell">68.8%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">43.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">18.8%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">18.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">43.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">18.8%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">18.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州零跑中心惠南汽车城店" data-merch="一维">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州零跑中心惠南汽车城店" data-merch="一维" data-mm="1,24,1,4,0,3,4,5,1,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州零跑中心惠南汽车城店</td>
@@ -5093,18 +5116,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">2.3%</td>
   <td class="lock-num sep">31</td>
   <td class="ratio-cell">72.1%</td>
-  <td class="ratio-cell sep">2.3%</td>
-  <td class="ratio-cell">55.8%</td>
-  <td class="ratio-cell">2.3%</td>
-  <td class="ratio-cell">9.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.0%</td>
-  <td class="ratio-cell">9.3%</td>
-  <td class="ratio-cell">11.6%</td>
-  <td class="ratio-cell">2.3%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">2.3%</td>
+  <td class="ratio-cell mtd">55.8%</td>
+  <td class="ratio-cell mtd">2.3%</td>
+  <td class="ratio-cell mtd">9.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.0%</td>
+  <td class="ratio-cell mtd">9.3%</td>
+  <td class="ratio-cell mtd">11.6%</td>
+  <td class="ratio-cell mtd">2.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州零跑中心仲恺汽车城店" data-merch="一维">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州零跑中心仲恺汽车城店" data-merch="一维" data-mm="0,8,1,5,0,0,0,1,1,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州零跑中心仲恺汽车城店</td>
@@ -5120,18 +5143,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.2%</td>
   <td class="lock-num sep">13</td>
   <td class="ratio-cell">81.2%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">50.0%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">31.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">50.0%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">31.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心河南岸车城店" data-merch="一维">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心河南岸车城店" data-merch="一维" data-mm="0,5,1,0,0,1,0,1,1,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心河南岸车城店</td>
@@ -5147,18 +5170,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">11.1%</td>
   <td class="lock-num sep">6</td>
   <td class="ratio-cell">66.7%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">55.6%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">55.6%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心惠东店" data-merch="一维">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心惠东店" data-merch="一维" data-mm="0,1,0,2,0,1,0,0,0,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心惠东店</td>
@@ -5174,18 +5197,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">4</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">50.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">50.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心龙门店" data-merch="一维">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心龙门店" data-merch="一维" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心龙门店</td>
@@ -5201,18 +5224,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州零跑中心金山汽车城店" data-merch="新零致">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州零跑中心金山汽车城店" data-merch="新零致" data-mm="2,11,6,6,0,10,3,5,5,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州零跑中心金山汽车城店</td>
@@ -5228,18 +5251,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">10.4%</td>
   <td class="lock-num sep">27</td>
   <td class="ratio-cell">56.2%</td>
-  <td class="ratio-cell sep">4.2%</td>
-  <td class="ratio-cell">22.9%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.8%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">10.4%</td>
-  <td class="ratio-cell">10.4%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">4.2%</td>
+  <td class="ratio-cell mtd">22.9%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.8%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">10.4%</td>
+  <td class="ratio-cell mtd">10.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州零跑中心人民四路店" data-merch="新零致">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州零跑中心人民四路店" data-merch="新零致" data-mm="1,12,0,5,0,1,0,1,0,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州零跑中心人民四路店</td>
@@ -5255,18 +5278,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">18</td>
   <td class="ratio-cell">90.0%</td>
-  <td class="ratio-cell sep">5.0%</td>
-  <td class="ratio-cell">60.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">5.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">5.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">5.0%</td>
+  <td class="ratio-cell mtd">60.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">5.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">5.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心博罗店" data-merch="新零致">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心博罗店" data-merch="新零致" data-mm="0,0,0,0,0,1,0,0,0,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心博罗店</td>
@@ -5282,18 +5305,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心大亚湾店" data-merch="新零致">
+<tr class="data-row" data-mgr="胡浩" data-store="惠州体验中心大亚湾店" data-merch="新零致" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">胡浩</td>
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心大亚湾店</td>
@@ -5309,18 +5332,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="陈恒惕" data-store="揭阳零跑中心荣通汽车城店" data-merch="荣通">
+<tr class="data-row" data-mgr="陈恒惕" data-store="揭阳零跑中心荣通汽车城店" data-merch="荣通" data-mm="0,2,0,4,0,2,0,2,0,0">
   <td class="name-cell">陈恒惕</td>
   <td class="name-cell">揭阳</td>
   <td class="name-cell">揭阳零跑中心荣通汽车城店</td>
@@ -5336,18 +5359,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">80.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">40.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">40.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="陈恒惕" data-store="揭阳体验中心普宁翔悦时代店" data-merch="荣通">
+<tr class="data-row" data-mgr="陈恒惕" data-store="揭阳体验中心普宁翔悦时代店" data-merch="荣通" data-mm="1,5,0,0,0,1,0,1,1,0">
   <td class="name-cell">陈恒惕</td>
   <td class="name-cell">揭阳</td>
   <td class="name-cell">揭阳体验中心普宁翔悦时代店</td>
@@ -5363,18 +5386,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">11.1%</td>
   <td class="lock-num sep">6</td>
   <td class="ratio-cell">66.7%</td>
-  <td class="ratio-cell sep">11.1%</td>
-  <td class="ratio-cell">55.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">11.1%</td>
+  <td class="ratio-cell mtd">55.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="陈恒惕" data-store="梅州零跑中心环市西路店" data-merch="新零致">
+<tr class="data-row" data-mgr="陈恒惕" data-store="梅州零跑中心环市西路店" data-merch="新零致" data-mm="0,3,0,6,0,3,1,1,0,0">
   <td class="name-cell">陈恒惕</td>
   <td class="name-cell">梅州</td>
   <td class="name-cell">梅州零跑中心环市西路店</td>
@@ -5390,18 +5413,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">12</td>
   <td class="ratio-cell">85.7%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">21.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">42.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">21.4%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">21.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">42.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">21.4%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="陈恒惕" data-store="梅州零跑中心剑英大道店" data-merch="骏诚">
+<tr class="data-row" data-mgr="陈恒惕" data-store="梅州零跑中心剑英大道店" data-merch="骏诚" data-mm="1,11,1,6,1,1,2,1,2,0">
   <td class="name-cell">陈恒惕</td>
   <td class="name-cell">梅州</td>
   <td class="name-cell">梅州零跑中心剑英大道店</td>
@@ -5417,18 +5440,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">7.7%</td>
   <td class="lock-num sep">18</td>
   <td class="ratio-cell">69.2%</td>
-  <td class="ratio-cell sep">3.8%</td>
-  <td class="ratio-cell">42.3%</td>
-  <td class="ratio-cell">3.8%</td>
-  <td class="ratio-cell">23.1%</td>
-  <td class="ratio-cell">3.8%</td>
-  <td class="ratio-cell">3.8%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">3.8%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">3.8%</td>
+  <td class="ratio-cell mtd">42.3%</td>
+  <td class="ratio-cell mtd">3.8%</td>
+  <td class="ratio-cell mtd">23.1%</td>
+  <td class="ratio-cell mtd">3.8%</td>
+  <td class="ratio-cell mtd">3.8%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">3.8%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="陈恒惕" data-store="汕尾体验中心汕尾大道店" data-merch="新零致">
+<tr class="data-row" data-mgr="陈恒惕" data-store="汕尾体验中心汕尾大道店" data-merch="新零致" data-mm="0,3,1,2,0,2,1,1,0,0">
   <td class="name-cell">陈恒惕</td>
   <td class="name-cell">汕尾</td>
   <td class="name-cell">汕尾体验中心汕尾大道店</td>
@@ -5444,18 +5467,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">7</td>
   <td class="ratio-cell">70.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">30.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">20.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">30.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="陈恒惕" data-store="汕尾体验中心海丰店" data-merch="新零致">
+<tr class="data-row" data-mgr="陈恒惕" data-store="汕尾体验中心海丰店" data-merch="新零致" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">陈恒惕</td>
   <td class="name-cell">汕尾</td>
   <td class="name-cell">汕尾体验中心海丰店</td>
@@ -5471,18 +5494,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="陈恒惕" data-store="潮州零跑中心潮汕路店" data-merch="荣通">
+<tr class="data-row" data-mgr="陈恒惕" data-store="潮州零跑中心潮汕路店" data-merch="荣通" data-mm="1,9,0,3,0,4,0,3,3,0">
   <td class="name-cell">陈恒惕</td>
   <td class="name-cell">潮州</td>
   <td class="name-cell">潮州零跑中心潮汕路店</td>
@@ -5498,18 +5521,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">13.0%</td>
   <td class="lock-num sep">16</td>
   <td class="ratio-cell">69.6%</td>
-  <td class="ratio-cell sep">4.3%</td>
-  <td class="ratio-cell">39.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">13.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">17.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">13.0%</td>
-  <td class="ratio-cell">13.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">4.3%</td>
+  <td class="ratio-cell mtd">39.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">13.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">17.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">13.0%</td>
+  <td class="ratio-cell mtd">13.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="万宁体验中心海榆东线店" data-merch="合群">
+<tr class="data-row" data-mgr="李传华" data-store="万宁体验中心海榆东线店" data-merch="合群" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">万宁</td>
   <td class="name-cell">万宁体验中心海榆东线店</td>
@@ -5525,18 +5548,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="三亚零跑中心榆亚路店" data-merch="合群">
+<tr class="data-row" data-mgr="李传华" data-store="三亚零跑中心榆亚路店" data-merch="合群" data-mm="1,12,2,7,0,1,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">三亚</td>
   <td class="name-cell">三亚零跑中心榆亚路店</td>
@@ -5552,18 +5575,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">20</td>
   <td class="ratio-cell">87.0%</td>
-  <td class="ratio-cell sep">4.3%</td>
-  <td class="ratio-cell">52.2%</td>
-  <td class="ratio-cell">8.7%</td>
-  <td class="ratio-cell">30.4%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">4.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">4.3%</td>
+  <td class="ratio-cell mtd">52.2%</td>
+  <td class="ratio-cell mtd">8.7%</td>
+  <td class="ratio-cell mtd">30.4%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">4.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="三亚体验中心迎宾路汽车城店" data-merch="合群">
+<tr class="data-row" data-mgr="李传华" data-store="三亚体验中心迎宾路汽车城店" data-merch="合群" data-mm="1,6,1,4,0,1,3,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">三亚</td>
   <td class="name-cell">三亚体验中心迎宾路汽车城店</td>
@@ -5579,18 +5602,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell">68.8%</td>
-  <td class="ratio-cell sep">6.2%</td>
-  <td class="ratio-cell">37.5%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell top5-model">18.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">6.2%</td>
+  <td class="ratio-cell mtd">37.5%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell top5-model mtd">18.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="三亚体验中心吉阳店" data-merch="合群">
+<tr class="data-row" data-mgr="李传华" data-store="三亚体验中心吉阳店" data-merch="合群" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">三亚</td>
   <td class="name-cell">三亚体验中心吉阳店</td>
@@ -5606,18 +5629,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="东方体验中心东方大道店" data-merch="合群">
+<tr class="data-row" data-mgr="李传华" data-store="东方体验中心东方大道店" data-merch="合群" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">东方</td>
   <td class="name-cell">东方体验中心东方大道店</td>
@@ -5633,18 +5656,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="临高体验中心市政大道店" data-merch="铧丰">
+<tr class="data-row" data-mgr="李传华" data-store="临高体验中心市政大道店" data-merch="铧丰" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">临高</td>
   <td class="name-cell">临高体验中心市政大道店</td>
@@ -5660,18 +5683,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="乐东体验中心抱由店" data-merch="合群">
+<tr class="data-row" data-mgr="李传华" data-store="乐东体验中心抱由店" data-merch="合群" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">乐东</td>
   <td class="name-cell">乐东体验中心抱由店</td>
@@ -5687,18 +5710,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="云浮体验中心环市中路店" data-merch="利生">
+<tr class="data-row" data-mgr="李传华" data-store="云浮体验中心环市中路店" data-merch="利生" data-mm="1,7,0,4,2,2,1,0,1,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">云浮</td>
   <td class="name-cell">云浮体验中心环市中路店</td>
@@ -5714,18 +5737,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">5.6%</td>
   <td class="lock-num sep">13</td>
   <td class="ratio-cell">72.2%</td>
-  <td class="ratio-cell sep">5.6%</td>
-  <td class="ratio-cell">38.9%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">22.2%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">5.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">5.6%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">5.6%</td>
+  <td class="ratio-cell mtd">38.9%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">22.2%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">5.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">5.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="云浮体验中心罗定店" data-merch="利生">
+<tr class="data-row" data-mgr="李传华" data-store="云浮体验中心罗定店" data-merch="利生" data-mm="0,1,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">云浮</td>
   <td class="name-cell">云浮体验中心罗定店</td>
@@ -5741,18 +5764,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="云浮体验中心新兴店" data-merch="利生">
+<tr class="data-row" data-mgr="李传华" data-store="云浮体验中心新兴店" data-merch="利生" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">云浮</td>
   <td class="name-cell">云浮体验中心新兴店</td>
@@ -5768,18 +5791,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="定安体验中心定城店" data-merch="正大">
+<tr class="data-row" data-mgr="李传华" data-store="定安体验中心定城店" data-merch="正大" data-mm="1,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">定安</td>
   <td class="name-cell">定安体验中心定城店</td>
@@ -5795,18 +5818,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell bot5">0.0%</td>
-  <td class="ratio-cell top5-model sep">100.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell top5-model sep mtd">100.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="海口零跑中心琼山大道店" data-merch="正大">
+<tr class="data-row" data-mgr="李传华" data-store="海口零跑中心琼山大道店" data-merch="正大" data-mm="0,8,1,11,1,11,6,1,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心琼山大道店</td>
@@ -5822,18 +5845,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">30</td>
   <td class="ratio-cell">76.9%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">20.5%</td>
-  <td class="ratio-cell">2.6%</td>
-  <td class="ratio-cell">28.2%</td>
-  <td class="ratio-cell">2.6%</td>
-  <td class="ratio-cell">28.2%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell">2.6%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.5%</td>
+  <td class="ratio-cell mtd">2.6%</td>
+  <td class="ratio-cell mtd">28.2%</td>
+  <td class="ratio-cell mtd">2.6%</td>
+  <td class="ratio-cell mtd">28.2%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell mtd">2.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="海口体验中心江东店" data-merch="正大">
+<tr class="data-row" data-mgr="李传华" data-store="海口体验中心江东店" data-merch="正大" data-mm="0,6,0,5,0,8,2,1,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心江东店</td>
@@ -5849,18 +5872,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">19</td>
   <td class="ratio-cell">86.4%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">27.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">22.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">36.4%</td>
-  <td class="ratio-cell">9.1%</td>
-  <td class="ratio-cell">4.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">27.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">22.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">36.4%</td>
+  <td class="ratio-cell mtd">9.1%</td>
+  <td class="ratio-cell mtd">4.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="海口零跑中心美安科技城店" data-merch="铧丰">
+<tr class="data-row" data-mgr="李传华" data-store="海口零跑中心美安科技城店" data-merch="铧丰" data-mm="0,8,3,3,1,4,1,1,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心美安科技城店</td>
@@ -5876,18 +5899,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">15</td>
   <td class="ratio-cell">71.4%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">38.1%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">4.8%</td>
-  <td class="ratio-cell">19.0%</td>
-  <td class="ratio-cell">4.8%</td>
-  <td class="ratio-cell">4.8%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">38.1%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">4.8%</td>
+  <td class="ratio-cell mtd">19.0%</td>
+  <td class="ratio-cell mtd">4.8%</td>
+  <td class="ratio-cell mtd">4.8%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="海口体验中心上邦百汇城店" data-merch="铧丰">
+<tr class="data-row" data-mgr="李传华" data-store="海口体验中心上邦百汇城店" data-merch="铧丰" data-mm="2,10,0,1,0,0,2,0,1,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心上邦百汇城店</td>
@@ -5903,18 +5926,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">6.2%</td>
   <td class="lock-num sep">11</td>
   <td class="ratio-cell">68.8%</td>
-  <td class="ratio-cell sep">12.5%</td>
-  <td class="ratio-cell">62.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">6.2%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">12.5%</td>
+  <td class="ratio-cell mtd">62.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">6.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="海口体验中心西秀店" data-merch="铧丰">
+<tr class="data-row" data-mgr="李传华" data-store="海口体验中心西秀店" data-merch="铧丰" data-mm="0,2,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心西秀店</td>
@@ -5930,18 +5953,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">2</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">100.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="湛江零跑中心海田车城店" data-merch="源流">
+<tr class="data-row" data-mgr="李传华" data-store="湛江零跑中心海田车城店" data-merch="源流" data-mm="0,16,0,3,3,10,4,3,1,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">湛江</td>
   <td class="name-cell">湛江零跑中心海田车城店</td>
@@ -5957,18 +5980,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">2.5%</td>
   <td class="lock-num sep">29</td>
   <td class="ratio-cell">72.5%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">40.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">7.5%</td>
-  <td class="ratio-cell">7.5%</td>
-  <td class="ratio-cell">25.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">7.5%</td>
-  <td class="ratio-cell">2.5%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">40.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">7.5%</td>
+  <td class="ratio-cell mtd">7.5%</td>
+  <td class="ratio-cell mtd">25.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">7.5%</td>
+  <td class="ratio-cell mtd">2.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="湛江体验中心瀚龙车城店" data-merch="源流">
+<tr class="data-row" data-mgr="李传华" data-store="湛江体验中心瀚龙车城店" data-merch="源流" data-mm="1,2,0,2,2,5,1,2,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">湛江</td>
   <td class="name-cell">湛江体验中心瀚龙车城店</td>
@@ -5984,18 +6007,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">9</td>
   <td class="ratio-cell">60.0%</td>
-  <td class="ratio-cell sep">6.7%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell top5-model">33.3%</td>
-  <td class="ratio-cell">6.7%</td>
-  <td class="ratio-cell">13.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">6.7%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell top5-model mtd">33.3%</td>
+  <td class="ratio-cell mtd">6.7%</td>
+  <td class="ratio-cell mtd">13.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="湛江体验中心粤西车城店" data-merch="源流">
+<tr class="data-row" data-mgr="李传华" data-store="湛江体验中心粤西车城店" data-merch="源流" data-mm="1,4,0,4,0,0,1,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">湛江</td>
   <td class="name-cell">湛江体验中心粤西车城店</td>
@@ -6011,18 +6034,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">80.0%</td>
-  <td class="ratio-cell sep">10.0%</td>
-  <td class="ratio-cell">40.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">40.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">10.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">10.0%</td>
+  <td class="ratio-cell mtd">40.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">40.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">10.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="肇庆零跑中心肇庆大道店" data-merch="美轮">
+<tr class="data-row" data-mgr="李传华" data-store="肇庆零跑中心肇庆大道店" data-merch="美轮" data-mm="0,8,1,3,1,3,1,6,0,2">
   <td class="name-cell">李传华</td>
   <td class="name-cell">肇庆</td>
   <td class="name-cell">肇庆零跑中心肇庆大道店</td>
@@ -6038,18 +6061,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">8.0%</td>
   <td class="lock-num sep">14</td>
   <td class="ratio-cell">56.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">32.0%</td>
-  <td class="ratio-cell">4.0%</td>
-  <td class="ratio-cell">12.0%</td>
-  <td class="ratio-cell">4.0%</td>
-  <td class="ratio-cell">12.0%</td>
-  <td class="ratio-cell">4.0%</td>
-  <td class="ratio-cell top5-model">24.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell top5-model">8.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">32.0%</td>
+  <td class="ratio-cell mtd">4.0%</td>
+  <td class="ratio-cell mtd">12.0%</td>
+  <td class="ratio-cell mtd">4.0%</td>
+  <td class="ratio-cell mtd">12.0%</td>
+  <td class="ratio-cell mtd">4.0%</td>
+  <td class="ratio-cell top5-model mtd">24.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">8.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="肇庆体验中心四会店" data-merch="美轮">
+<tr class="data-row" data-mgr="李传华" data-store="肇庆体验中心四会店" data-merch="美轮" data-mm="0,0,0,1,0,1,1,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">肇庆</td>
   <td class="name-cell">肇庆体验中心四会店</td>
@@ -6065,18 +6088,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">2</td>
   <td class="ratio-cell">66.7%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">33.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">33.3%</td>
-  <td class="ratio-cell top5-model">33.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">33.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">33.3%</td>
+  <td class="ratio-cell top5-model mtd">33.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="茂名零跑中心茂名大道店" data-merch="美轮">
+<tr class="data-row" data-mgr="李传华" data-store="茂名零跑中心茂名大道店" data-merch="美轮" data-mm="0,14,3,1,0,2,1,3,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">茂名</td>
   <td class="name-cell">茂名零跑中心茂名大道店</td>
@@ -6092,18 +6115,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">17</td>
   <td class="ratio-cell">70.8%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">58.3%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">8.3%</td>
-  <td class="ratio-cell">4.2%</td>
-  <td class="ratio-cell">12.5%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">58.3%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">8.3%</td>
+  <td class="ratio-cell mtd">4.2%</td>
+  <td class="ratio-cell mtd">12.5%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="茂名体验中心茂水路店" data-merch="美轮">
+<tr class="data-row" data-mgr="李传华" data-store="茂名体验中心茂水路店" data-merch="美轮" data-mm="1,1,1,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">茂名</td>
   <td class="name-cell">茂名体验中心茂水路店</td>
@@ -6119,18 +6142,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell bot5">33.3%</td>
-  <td class="ratio-cell top5-model sep">33.3%</td>
-  <td class="ratio-cell">33.3%</td>
-  <td class="ratio-cell top5-model">33.3%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell top5-model sep mtd">33.3%</td>
+  <td class="ratio-cell mtd">33.3%</td>
+  <td class="ratio-cell top5-model mtd">33.3%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="茂名体验中心信宜店" data-merch="美轮">
+<tr class="data-row" data-mgr="李传华" data-store="茂名体验中心信宜店" data-merch="美轮" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">茂名</td>
   <td class="name-cell">茂名体验中心信宜店</td>
@@ -6146,18 +6169,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="茂名体验中心高州店" data-merch="美轮">
+<tr class="data-row" data-mgr="李传华" data-store="茂名体验中心高州店" data-merch="美轮" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">茂名</td>
   <td class="name-cell">茂名体验中心高州店</td>
@@ -6173,18 +6196,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="阳江零跑中心溢信汽车城店" data-merch="溢信">
+<tr class="data-row" data-mgr="李传华" data-store="阳江零跑中心溢信汽车城店" data-merch="溢信" data-mm="5,8,1,4,0,6,1,2,1,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">阳江</td>
   <td class="name-cell">阳江零跑中心溢信汽车城店</td>
@@ -6200,18 +6223,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">3.6%</td>
   <td class="lock-num sep">18</td>
   <td class="ratio-cell">64.3%</td>
-  <td class="ratio-cell sep">17.9%</td>
-  <td class="ratio-cell">28.6%</td>
-  <td class="ratio-cell">3.6%</td>
-  <td class="ratio-cell">14.3%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">21.4%</td>
-  <td class="ratio-cell">3.6%</td>
-  <td class="ratio-cell">7.1%</td>
-  <td class="ratio-cell">3.6%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">17.9%</td>
+  <td class="ratio-cell mtd">28.6%</td>
+  <td class="ratio-cell mtd">3.6%</td>
+  <td class="ratio-cell mtd">14.3%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">21.4%</td>
+  <td class="ratio-cell mtd">3.6%</td>
+  <td class="ratio-cell mtd">7.1%</td>
+  <td class="ratio-cell mtd">3.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="阳江体验中心阳春店" data-merch="溢信">
+<tr class="data-row" data-mgr="李传华" data-store="阳江体验中心阳春店" data-merch="溢信" data-mm="1,6,0,1,0,0,0,1,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">阳江</td>
   <td class="name-cell">阳江体验中心阳春店</td>
@@ -6227,18 +6250,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">7</td>
   <td class="ratio-cell">77.8%</td>
-  <td class="ratio-cell sep">11.1%</td>
-  <td class="ratio-cell">66.7%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">11.1%</td>
+  <td class="ratio-cell mtd">66.7%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="阳江体验中心新达城店" data-merch="溢信">
+<tr class="data-row" data-mgr="李传华" data-store="阳江体验中心新达城店" data-merch="溢信" data-mm="1,4,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">阳江</td>
   <td class="name-cell">阳江体验中心新达城店</td>
@@ -6254,18 +6277,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">4</td>
   <td class="ratio-cell">80.0%</td>
-  <td class="ratio-cell sep">20.0%</td>
-  <td class="ratio-cell">80.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">20.0%</td>
+  <td class="ratio-cell mtd">80.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李传华" data-store="陵水体验中心桃源大道店" data-merch="合群">
+<tr class="data-row" data-mgr="李传华" data-store="陵水体验中心桃源大道店" data-merch="合群" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李传华</td>
   <td class="name-cell">陵水</td>
   <td class="name-cell">陵水体验中心桃源大道店</td>
@@ -6281,18 +6304,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="儋州体验中心西部汽车城店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="儋州体验中心西部汽车城店" data-merch="九兴" data-mm="0,1,0,0,0,0,0,0,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">儋州</td>
   <td class="name-cell">儋州体验中心西部汽车城店</td>
@@ -6308,18 +6331,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">1</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell bot5-model sep">0.0%</td>
-  <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell bot5-model sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">100.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="儋州体验中心中兴大街店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="儋州体验中心中兴大街店" data-merch="九兴" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">儋州</td>
   <td class="name-cell">儋州体验中心中兴大街店</td>
@@ -6335,18 +6358,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="文昌体验中心文城店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="文昌体验中心文城店" data-merch="九兴" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">文昌</td>
   <td class="name-cell">文昌体验中心文城店</td>
@@ -6362,18 +6385,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="海口零跑中心南海大道东店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="海口零跑中心南海大道东店" data-merch="九兴" data-mm="3,14,5,8,0,14,8,8,1,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心南海大道东店</td>
@@ -6389,18 +6412,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">1.6%</td>
   <td class="lock-num sep">36</td>
   <td class="ratio-cell">59.0%</td>
-  <td class="ratio-cell sep">4.9%</td>
-  <td class="ratio-cell">23.0%</td>
-  <td class="ratio-cell">8.2%</td>
-  <td class="ratio-cell">13.1%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">23.0%</td>
-  <td class="ratio-cell">13.1%</td>
-  <td class="ratio-cell">13.1%</td>
-  <td class="ratio-cell">1.6%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">4.9%</td>
+  <td class="ratio-cell mtd">23.0%</td>
+  <td class="ratio-cell mtd">8.2%</td>
+  <td class="ratio-cell mtd">13.1%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">23.0%</td>
+  <td class="ratio-cell mtd">13.1%</td>
+  <td class="ratio-cell mtd">13.1%</td>
+  <td class="ratio-cell mtd">1.6%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="海口零跑中心南海大道店（销售）" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="海口零跑中心南海大道店（销售）" data-merch="九兴" data-mm="1,21,0,8,0,5,3,1,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心南海大道店（销售）</td>
@@ -6416,18 +6439,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell bot5">0.0%</td>
   <td class="lock-num sep">34</td>
   <td class="ratio-cell">87.2%</td>
-  <td class="ratio-cell sep">2.6%</td>
-  <td class="ratio-cell">53.8%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">20.5%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">12.8%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">2.6%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
+  <td class="ratio-cell sep mtd">2.6%</td>
+  <td class="ratio-cell mtd">53.8%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">20.5%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">12.8%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">2.6%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="海口体验中心海口东站店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="海口体验中心海口东站店" data-merch="九兴" data-mm="0,8,2,4,0,4,3,4,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心海口东站店</td>
@@ -6443,18 +6466,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell bot5">0.0%</td>
   <td class="lock-num sep">16</td>
   <td class="ratio-cell">64.0%</td>
-  <td class="ratio-cell bot5-model sep">0.0%</td>
-  <td class="ratio-cell">32.0%</td>
-  <td class="ratio-cell">8.0%</td>
-  <td class="ratio-cell">16.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">16.0%</td>
-  <td class="ratio-cell">12.0%</td>
-  <td class="ratio-cell">16.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
+  <td class="ratio-cell bot5-model sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">32.0%</td>
+  <td class="ratio-cell mtd">8.0%</td>
+  <td class="ratio-cell mtd">16.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">16.0%</td>
+  <td class="ratio-cell mtd">12.0%</td>
+  <td class="ratio-cell mtd">16.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="海口体验中心海甸城店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="海口体验中心海甸城店" data-merch="九兴" data-mm="0,7,1,2,0,3,0,0,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心海甸城店</td>
@@ -6470,18 +6493,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell bot5">0.0%</td>
   <td class="lock-num sep">12</td>
   <td class="ratio-cell">92.3%</td>
-  <td class="ratio-cell bot5-model sep">0.0%</td>
-  <td class="ratio-cell">53.8%</td>
-  <td class="ratio-cell">7.7%</td>
-  <td class="ratio-cell">15.4%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell">23.1%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
+  <td class="ratio-cell bot5-model sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">53.8%</td>
+  <td class="ratio-cell mtd">7.7%</td>
+  <td class="ratio-cell mtd">15.4%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell mtd">23.1%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="海口零跑中心海盛路店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="海口零跑中心海盛路店" data-merch="九兴" data-mm="0,2,0,4,1,2,0,0,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心海盛路店</td>
@@ -6497,18 +6520,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell bot5">0.0%</td>
   <td class="lock-num sep">8</td>
   <td class="ratio-cell">88.9%</td>
-  <td class="ratio-cell bot5-model sep">0.0%</td>
-  <td class="ratio-cell">22.2%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell top5-model">44.4%</td>
-  <td class="ratio-cell">11.1%</td>
-  <td class="ratio-cell">22.2%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
+  <td class="ratio-cell bot5-model sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">22.2%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell top5-model mtd">44.4%</td>
+  <td class="ratio-cell mtd">11.1%</td>
+  <td class="ratio-cell mtd">22.2%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="澄迈体验中心金马大道店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="澄迈体验中心金马大道店" data-merch="九兴" data-mm="0,2,0,0,0,0,0,0,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">澄迈</td>
   <td class="name-cell">澄迈体验中心金马大道店</td>
@@ -6524,18 +6547,18 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell bot5">0.0%</td>
   <td class="lock-num sep">2</td>
   <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell bot5-model sep">0.0%</td>
-  <td class="ratio-cell">100.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
-  <td class="ratio-cell bot5-model">0.0%</td>
+  <td class="ratio-cell bot5-model sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">100.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
+  <td class="ratio-cell bot5-model mtd">0.0%</td>
 </tr>
-<tr class="data-row" data-mgr="李博恩" data-store="琼海体验中心豪华路车城店" data-merch="九兴">
+<tr class="data-row" data-mgr="李博恩" data-store="琼海体验中心豪华路车城店" data-merch="九兴" data-mm="0,0,0,0,0,0,0,0,0,0">
   <td class="name-cell">李博恩</td>
   <td class="name-cell">琼海</td>
   <td class="name-cell">琼海体验中心豪华路车城店</td>
@@ -6551,16 +6574,16 @@ tr.data-row:hover{background:#fff}
   <td class="ratio-cell">0.0%</td>
   <td class="lock-num sep">0</td>
   <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell sep">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
-  <td class="ratio-cell">0.0%</td>
+  <td class="ratio-cell sep mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
+  <td class="ratio-cell mtd">0.0%</td>
 </tr></tbody></table></div>
 
   <script>
@@ -6653,12 +6676,106 @@ tr.data-row:hover{background:#fff}
           }
           tr.style.display=ok?'':'none';
         });
+        if(window.__storeModelRefresh) window.__storeModelRefresh();
       }
       apply();
     }
+
+    /* ---------- 表4「车型」多选 → 动态列：所选车型合计 / 各车型锁单数 + 占比(占所选车型合计) ---------- */
+    function initModelFilter(o){
+      var tbl=document.getElementById(o.tableId);
+      var box=document.getElementById(o.boxId);
+      if(!tbl||!box) return;
+      var labels=o.labels;
+      var headRow=tbl.querySelector('thead tr.series-header');
+      var groupTh=tbl.querySelector('thead tr.header-main th.model-group');
+      var cg=tbl.querySelector('colgroup');
+      var badge=document.getElementById(o.badgeId);
+      var FIXW=966, WS=58, WL=52, WR=52, DEFW=45, DEFTW=1371;
+      // 缓存默认静态车型列（切回「全部」时原样还原，保留 top5/bot5 标色）
+      Array.prototype.forEach.call(tbl.querySelectorAll('tbody tr'), function(tr){
+        tr.__mdef = Array.prototype.slice.call(tr.querySelectorAll('td.mtd')).map(function(td){return td.outerHTML;}).join('');
+      });
+      var getSel = setup(o.boxId, render);
+      function nums(tr){
+        var s=tr.getAttribute('data-mm');
+        if(!s) return null;
+        return s.split(',').map(function(x){ return parseInt(x,10)||0; });
+      }
+      function selIdx(){
+        return getSel().map(function(v){ return labels.indexOf(v); })
+                       .filter(function(i){ return i>=0; })
+                       .sort(function(a,b){ return a-b; });
+      }
+      function render(){
+        var idx=selIdx();
+        Array.prototype.forEach.call(headRow.querySelectorAll('th.mth'), function(t){ t.parentNode.removeChild(t); });
+        Array.prototype.forEach.call(cg.querySelectorAll('col.mcol'), function(c){ c.parentNode.removeChild(c); });
+        if(idx.length){
+          groupTh.textContent='所选车型';
+          groupTh.setAttribute('colspan', String(1+idx.length*2));
+          var thSum=document.createElement('th');
+          thSum.className='mth sep'; thSum.textContent='合计'; thSum.style.width=WS+'px';
+          headRow.appendChild(thSum);
+          var cSum=document.createElement('col'); cSum.className='mcol'; cSum.style.width=WS+'px'; cg.appendChild(cSum);
+          idx.forEach(function(i){
+            var thL=document.createElement('th');
+            thL.className='mth sep'; thL.textContent=labels[i]; thL.style.width=WL+'px'; headRow.appendChild(thL);
+            var thR=document.createElement('th');
+            thR.className='mth'; thR.textContent='占比'; thR.style.width=WR+'px'; headRow.appendChild(thR);
+            var c1=document.createElement('col'); c1.className='mcol'; c1.style.width=WL+'px'; cg.appendChild(c1);
+            var c2=document.createElement('col'); c2.className='mcol'; c2.style.width=WR+'px'; cg.appendChild(c2);
+          });
+          tbl.style.width=(FIXW+WS+idx.length*(WL+WR))+'px';
+        }else{
+          groupTh.textContent='内占比';
+          groupTh.setAttribute('colspan','10');
+          labels.forEach(function(lb,k){
+            var th=document.createElement('th');
+            th.className='mth'+(k===0?' sep':''); th.textContent=lb; th.style.width=DEFW+'px';
+            headRow.appendChild(th);
+            var cc=document.createElement('col'); cc.className='mcol'; cc.style.width=DEFW+'px'; cg.appendChild(cc);
+          });
+          tbl.style.width=DEFTW+'px';
+        }
+        Array.prototype.forEach.call(tbl.querySelectorAll('tbody tr'), function(tr){
+          var a=nums(tr);
+          if(!a) return;
+          Array.prototype.forEach.call(tr.querySelectorAll('td.mtd'), function(td){ td.parentNode.removeChild(td); });
+          if(!idx.length){ tr.insertAdjacentHTML('beforeend', tr.__mdef||''); return; }
+          var sum=0;
+          idx.forEach(function(i){ sum += a[i]||0; });
+          var cells='<td class="mtd lock-num sep" data-sum="'+sum+'">'+sum+'</td>';
+          idx.forEach(function(i){
+            var v=a[i]||0;
+            cells += '<td class="mtd lock-num">'+v+'</td>';
+            cells += '<td class="mtd ratio-cell">'+(sum?(v/sum*100).toFixed(1):'0.0')+'%</td>';
+          });
+          tr.insertAdjacentHTML('beforeend', cells);
+        });
+        updateBadge();
+      }
+      function updateBadge(){
+        var idx=selIdx();
+        if(!idx.length){ badge.style.display='none'; badge.textContent=''; return; }
+        var sum=0;
+        Array.prototype.forEach.call(tbl.querySelectorAll('tbody tr.data-row'), function(tr){
+          if(tr.style.display==='none') return;
+          var a=nums(tr); if(!a) return;
+          idx.forEach(function(i){ sum += a[i]||0; });
+        });
+        badge.style.display='inline-block';
+        badge.textContent='当前筛选 · 所选车型合计锁单：'+sum;
+      }
+      window.__storeModelRefresh=updateBadge;
+      render();
+    }
+
     initFilter({tableId:'cityTable', mgrBoxId:'mgrBox', dimBoxes:[{boxId:'cityBox', dimKey:'data-city'}]});
     initFilter({tableId:'merchTable', mgrBoxId:'mgrBox2', dimBoxes:[{boxId:'merchBox', dimKey:'data-merch'}]});
     initFilter({tableId:'storeTable', mgrBoxId:'mgrBox3', dimBoxes:[{boxId:'merchBox4', dimKey:'data-merch'},{boxId:'storeBox', dimKey:'data-store'}]});
+    initModelFilter({tableId:'storeTable', boxId:'modelBox', badgeId:'modelTotal',
+                     labels:["A05", "A10", "B01", "B10", "Lafa 5", "C10", "C11", "C16", "D19", "D99"]});
     document.addEventListener('click',function(){
       document.querySelectorAll('.mselect.open').forEach(function(o){ o.classList.remove('open'); });
     });
