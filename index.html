@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="build" content="2026-11-10 15:23:31">
+  <meta name="build" content="2026-11-10 15:25:23">
 <title>年型四轮驱动 - 零售经理车系锁单内占比看板</title>
 <style>
 *{box-sizing:border-box}
@@ -60,7 +60,7 @@ tr.data-row:hover{background:#fff}
 </style></head><body>
 <div class="board">
   <div class="board-head"><div class="board-title">华南车型四轮驱动看板</div><div class="board-date">11 / 9</div></div>
-                                                                                                                                                                                                                                                                                                                                                  <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
+                                                                                                                                                                                                                                                                                                                                                      <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
   <div class="wrap"><table>
     <colgroup>
     <col style="width:110px"><col style="width:54px">
@@ -2676,7 +2676,7 @@ tr.data-row:hover{background:#fff}
     <col span="2" style="width:44px"><col span="2" style="width:44px">
     <col span="2" style="width:44px"><col span="2" style="width:44px">
     <col span="2" style="width:44px">
-    <col span="10" style="width:45px">
+    <col span="10" class="mcol" style="width:45px">
   </colgroup>
   <thead><tr class="header-main">
     <th rowspan="2">零售高级经理</th>
@@ -6691,7 +6691,7 @@ tr.data-row:hover{background:#fff}
       var groupTh=tbl.querySelector('thead tr.header-main th.model-group');
       var cg=tbl.querySelector('colgroup');
       var badge=document.getElementById(o.badgeId);
-      var FIXW=966, WS=58, WL=52, WR=52, DEFW=45, DEFTW=1371;
+      var FIXW=966, WS=56, WL=50, WR=50, DEFW=45, DEFTW=1371;
       // 缓存默认静态车型列（切回「全部」时原样还原，保留 top5/bot5 标色）
       Array.prototype.forEach.call(tbl.querySelectorAll('tbody tr'), function(tr){
         tr.__mdef = Array.prototype.slice.call(tr.querySelectorAll('td.mtd')).map(function(td){return td.outerHTML;}).join('');
