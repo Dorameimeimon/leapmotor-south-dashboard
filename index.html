@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="build" content="2026-11-10 15:36:14">
+  <meta name="build" content="2026-11-10 15:38:53">
 <title>年型四轮驱动 - 零售经理车系锁单内占比看板</title>
 <style>
 *{box-sizing:border-box}
@@ -62,10 +62,13 @@ tr.data-row:hover{background:#fff}
    box-shadow:0 1px 3px rgba(46,125,50,.25);transition:background .15s}
 .btn-export:hover{background:#2e7d32}
 .btn-export:active{transform:translateY(1px)}
+/* 表4 车型筛选态：「合计」列浅黄底，与华南汇总行同色 */
+#storeTable .sum-col{background:#fff59d !important;color:#1b5e20 !important}
+#storeTable .sum-th{background:#e8d98a !important;color:#1b5e20 !important;font-weight:800 !important}
 </style></head><body>
 <div class="board">
   <div class="board-head"><div class="board-title">华南车型四轮驱动看板</div><div class="board-date">11 / 9</div></div>
-                                                                                                                                                                                                                                                                                                                                                              <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
+                                                                                                                                                                                                                                                                                                                                                                  <div class="board-sub sub3">| 👔 零售经理 · 各车系锁单内占比</div>
   <div class="wrap"><table>
     <colgroup>
     <col style="width:110px"><col style="width:54px">
@@ -2689,7 +2692,7 @@ tr.data-row:hover{background:#fff}
     <th rowspan="2">城市</th>
     <th rowspan="2">门店名称</th>
     <th rowspan="2">商</th>
-    <th rowspan="2">全系锁单</th>
+    <th rowspan="2" class="scell">全系锁单</th>
     <th colspan="2" class="sep sgroup">A系 ~35%</th>
     <th colspan="2" class="sep sgroup">B系 ~20%</th>
     <th colspan="2" class="sep sgroup">C系 ~35%</th>
@@ -2708,7 +2711,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell summary-row">华南</td>
   <td class="name-cell summary-row">华南</td>
   <td class="name-cell summary-row">华南</td>
-  <td class="total-cell summary-row">2251</td>
+  <td class="total-cell summary-row scell">2251</td>
   <td class="lock-num sep summary-row scell">1004</td>
   <td class="ratio-cell summary-row scell">44.6%</td>
   <td class="lock-num sep summary-row scell">474</td>
@@ -2735,7 +2738,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心新塘汽车城店</td>
   <td class="name-cell">凌跑商贸</td>
-  <td class="total-cell">42</td>
+  <td class="total-cell scell">42</td>
   <td class="lock-num sep scell">18</td>
   <td class="ratio-cell scell">42.9%</td>
   <td class="lock-num sep scell">9</td>
@@ -2762,7 +2765,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心白云机场路店</td>
   <td class="name-cell">凌跑商贸</td>
-  <td class="total-cell">32</td>
+  <td class="total-cell scell">32</td>
   <td class="lock-num sep scell">11</td>
   <td class="ratio-cell scell">34.4%</td>
   <td class="lock-num sep scell">7</td>
@@ -2789,7 +2792,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心广州南站店</td>
   <td class="name-cell">凌跑商贸</td>
-  <td class="total-cell">31</td>
+  <td class="total-cell scell">31</td>
   <td class="lock-num sep scell">15</td>
   <td class="ratio-cell scell">48.4%</td>
   <td class="lock-num sep scell">5</td>
@@ -2816,7 +2819,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心科学城店</td>
   <td class="name-cell">凌跑商贸</td>
-  <td class="total-cell">31</td>
+  <td class="total-cell scell">31</td>
   <td class="lock-num sep scell">12</td>
   <td class="ratio-cell scell">38.7%</td>
   <td class="lock-num sep scell">6</td>
@@ -2843,7 +2846,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心番禺大道店</td>
   <td class="name-cell">凌跑商贸</td>
-  <td class="total-cell">30</td>
+  <td class="total-cell scell">30</td>
   <td class="lock-num sep scell">15</td>
   <td class="ratio-cell scell">50.0%</td>
   <td class="lock-num sep scell">7</td>
@@ -2870,7 +2873,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心天河汇彩路店</td>
   <td class="name-cell">凌跑商贸</td>
-  <td class="total-cell">28</td>
+  <td class="total-cell scell">28</td>
   <td class="lock-num sep scell">10</td>
   <td class="ratio-cell scell">35.7%</td>
   <td class="lock-num sep scell">9</td>
@@ -2897,7 +2900,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心天河广汕路店</td>
   <td class="name-cell">凌跑商贸</td>
-  <td class="total-cell">27</td>
+  <td class="total-cell scell">27</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell scell">48.1%</td>
   <td class="lock-num sep scell">6</td>
@@ -2924,7 +2927,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心增城店</td>
   <td class="name-cell">凌跑商贸</td>
-  <td class="total-cell">24</td>
+  <td class="total-cell scell">24</td>
   <td class="lock-num sep scell">9</td>
   <td class="ratio-cell scell">37.5%</td>
   <td class="lock-num sep scell">9</td>
@@ -2951,7 +2954,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心金马汽车城店</td>
   <td class="name-cell">沃之瑞</td>
-  <td class="total-cell">20</td>
+  <td class="total-cell scell">20</td>
   <td class="lock-num sep scell">14</td>
   <td class="ratio-cell scell">70.0%</td>
   <td class="lock-num sep scell">1</td>
@@ -2978,7 +2981,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心花地大道店</td>
   <td class="name-cell">沃之瑞</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -3005,7 +3008,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心亚运大道店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">24</td>
+  <td class="total-cell scell">24</td>
   <td class="lock-num sep scell">11</td>
   <td class="ratio-cell scell">45.8%</td>
   <td class="lock-num sep scell">4</td>
@@ -3032,7 +3035,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心沥滘海心沙店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">19</td>
+  <td class="total-cell scell">19</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">42.1%</td>
   <td class="lock-num sep scell">6</td>
@@ -3059,7 +3062,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心美轮汽车园店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">15</td>
+  <td class="total-cell scell">15</td>
   <td class="lock-num sep scell">9</td>
   <td class="ratio-cell scell">60.0%</td>
   <td class="lock-num sep scell">1</td>
@@ -3086,7 +3089,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心番禺大北路店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">7</td>
+  <td class="total-cell scell">7</td>
   <td class="lock-num sep scell">5</td>
   <td class="ratio-cell scell">71.4%</td>
   <td class="lock-num sep scell">1</td>
@@ -3113,7 +3116,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心白云大道店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">30</td>
+  <td class="total-cell scell">30</td>
   <td class="lock-num sep scell">16</td>
   <td class="ratio-cell scell">53.3%</td>
   <td class="lock-num sep scell">4</td>
@@ -3140,7 +3143,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州零跑中心花都建设路店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">27</td>
+  <td class="total-cell scell">27</td>
   <td class="lock-num sep scell">22</td>
   <td class="ratio-cell scell">81.5%</td>
   <td class="lock-num sep scell">2</td>
@@ -3167,7 +3170,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心为正车城店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">14</td>
+  <td class="total-cell scell">14</td>
   <td class="lock-num sep scell">6</td>
   <td class="ratio-cell scell">42.9%</td>
   <td class="lock-num sep scell">2</td>
@@ -3194,7 +3197,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心广花路店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">13</td>
+  <td class="total-cell scell">13</td>
   <td class="lock-num sep scell">11</td>
   <td class="ratio-cell scell">84.6%</td>
   <td class="lock-num sep scell">1</td>
@@ -3221,7 +3224,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">广州</td>
   <td class="name-cell">广州体验中心花都北站店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">13</td>
+  <td class="total-cell scell">13</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">61.5%</td>
   <td class="lock-num sep scell">3</td>
@@ -3248,7 +3251,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">汕头</td>
   <td class="name-cell">汕头零跑中心金凤路店</td>
   <td class="name-cell">亿海</td>
-  <td class="total-cell">25</td>
+  <td class="total-cell scell">25</td>
   <td class="lock-num sep scell">15</td>
   <td class="ratio-cell scell">60.0%</td>
   <td class="lock-num sep scell">5</td>
@@ -3275,7 +3278,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">汕头</td>
   <td class="name-cell">汕头体验中心广汕路店</td>
   <td class="name-cell">亿海</td>
-  <td class="total-cell">10</td>
+  <td class="total-cell scell">10</td>
   <td class="lock-num sep scell">4</td>
   <td class="ratio-cell scell">40.0%</td>
   <td class="lock-num sep scell">1</td>
@@ -3302,7 +3305,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">汕头</td>
   <td class="name-cell">汕头零跑中心汕汾路店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">29</td>
+  <td class="total-cell scell">29</td>
   <td class="lock-num sep scell">12</td>
   <td class="ratio-cell scell">41.4%</td>
   <td class="lock-num sep scell">1</td>
@@ -3329,7 +3332,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">汕头</td>
   <td class="name-cell">汕头体验中心澄海店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -3356,7 +3359,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">河源</td>
   <td class="name-cell">河源零跑中心河源大道店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">31</td>
+  <td class="total-cell scell">31</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell scell">41.9%</td>
   <td class="lock-num sep scell">8</td>
@@ -3383,7 +3386,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">河源</td>
   <td class="name-cell">河源体验中心坚基购物中心店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">11</td>
+  <td class="total-cell scell">11</td>
   <td class="lock-num sep scell">5</td>
   <td class="ratio-cell scell">45.5%</td>
   <td class="lock-num sep scell">1</td>
@@ -3410,7 +3413,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">清远</td>
   <td class="name-cell">清远零跑中心港鸿汽车城店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">24</td>
+  <td class="total-cell scell">24</td>
   <td class="lock-num sep scell">24</td>
   <td class="ratio-cell top5 scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -3437,7 +3440,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">清远</td>
   <td class="name-cell">清远体验中心奇晟汽车城店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">13</td>
+  <td class="total-cell scell">13</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell top5 scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -3464,7 +3467,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">清远</td>
   <td class="name-cell">清远体验中心英德店</td>
   <td class="name-cell">骏延</td>
-  <td class="total-cell">2</td>
+  <td class="total-cell scell">2</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell top5 scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -3491,7 +3494,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心远望车城店</td>
   <td class="name-cell">新易腾</td>
-  <td class="total-cell">31</td>
+  <td class="total-cell scell">31</td>
   <td class="lock-num sep scell">12</td>
   <td class="ratio-cell scell">38.7%</td>
   <td class="lock-num sep scell">5</td>
@@ -3518,7 +3521,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心光明车城店</td>
   <td class="name-cell">新易腾</td>
-  <td class="total-cell">30</td>
+  <td class="total-cell scell">30</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell scell">43.3%</td>
   <td class="lock-num sep scell">4</td>
@@ -3545,7 +3548,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心万国城旗舰店</td>
   <td class="name-cell">新易腾</td>
-  <td class="total-cell">29</td>
+  <td class="total-cell scell">29</td>
   <td class="lock-num sep scell">10</td>
   <td class="ratio-cell scell">34.5%</td>
   <td class="lock-num sep scell">4</td>
@@ -3572,7 +3575,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心宝运达汽车城店</td>
   <td class="name-cell">新易腾</td>
-  <td class="total-cell">28</td>
+  <td class="total-cell scell">28</td>
   <td class="lock-num sep scell">17</td>
   <td class="ratio-cell scell">60.7%</td>
   <td class="lock-num sep scell">3</td>
@@ -3599,7 +3602,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心龙华中心店</td>
   <td class="name-cell">新易腾</td>
-  <td class="total-cell">22</td>
+  <td class="total-cell scell">22</td>
   <td class="lock-num sep scell">5</td>
   <td class="ratio-cell scell">22.7%</td>
   <td class="lock-num sep scell">5</td>
@@ -3626,7 +3629,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心杰鹏车城店</td>
   <td class="name-cell">新易腾</td>
-  <td class="total-cell">15</td>
+  <td class="total-cell scell">15</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">53.3%</td>
   <td class="lock-num sep scell">2</td>
@@ -3653,7 +3656,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心观澜湖新城店</td>
   <td class="name-cell">新易腾</td>
-  <td class="total-cell">6</td>
+  <td class="total-cell scell">6</td>
   <td class="lock-num sep scell">3</td>
   <td class="ratio-cell scell">50.0%</td>
   <td class="lock-num sep scell">1</td>
@@ -3680,7 +3683,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心百世汽车城店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">25</td>
+  <td class="total-cell scell">25</td>
   <td class="lock-num sep scell">7</td>
   <td class="ratio-cell scell">28.0%</td>
   <td class="lock-num sep scell">3</td>
@@ -3707,7 +3710,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心龙岗信义店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">9</td>
+  <td class="total-cell scell">9</td>
   <td class="lock-num sep scell">4</td>
   <td class="ratio-cell scell">44.4%</td>
   <td class="lock-num sep scell">1</td>
@@ -3734,7 +3737,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心锦龙大道店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">4</td>
+  <td class="total-cell scell">4</td>
   <td class="lock-num sep scell">3</td>
   <td class="ratio-cell scell">75.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -3761,7 +3764,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心启创汽车城店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -3788,7 +3791,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心南山嘉进隆店</td>
   <td class="name-cell">标特</td>
-  <td class="total-cell">23</td>
+  <td class="total-cell scell">23</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell bot5 scell">8.7%</td>
   <td class="lock-num sep scell">6</td>
@@ -3815,7 +3818,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳体验中心福田瑞鹏达店</td>
   <td class="name-cell">标特</td>
-  <td class="total-cell">14</td>
+  <td class="total-cell scell">14</td>
   <td class="lock-num sep scell">4</td>
   <td class="ratio-cell scell">28.6%</td>
   <td class="lock-num sep scell">5</td>
@@ -3842,7 +3845,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">深圳</td>
   <td class="name-cell">深圳零跑中心芙蓉路店</td>
   <td class="name-cell">标特</td>
-  <td class="total-cell">12</td>
+  <td class="total-cell scell">12</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">16.7%</td>
   <td class="lock-num sep scell">4</td>
@@ -3869,7 +3872,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心禅城国际汽车城店</td>
   <td class="name-cell">利泰</td>
-  <td class="total-cell">34</td>
+  <td class="total-cell scell">34</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">23.5%</td>
   <td class="lock-num sep scell">8</td>
@@ -3896,7 +3899,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心南庄汽车城店</td>
   <td class="name-cell">利泰</td>
-  <td class="total-cell">24</td>
+  <td class="total-cell scell">24</td>
   <td class="lock-num sep scell">10</td>
   <td class="ratio-cell scell">41.7%</td>
   <td class="lock-num sep scell">6</td>
@@ -3923,7 +3926,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心桂澜路店</td>
   <td class="name-cell">利泰</td>
-  <td class="total-cell">24</td>
+  <td class="total-cell scell">24</td>
   <td class="lock-num sep scell">16</td>
   <td class="ratio-cell scell">66.7%</td>
   <td class="lock-num sep scell">1</td>
@@ -3950,7 +3953,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心佛平四路店</td>
   <td class="name-cell">利泰</td>
-  <td class="total-cell">7</td>
+  <td class="total-cell scell">7</td>
   <td class="lock-num sep scell">7</td>
   <td class="ratio-cell top5 scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -3977,7 +3980,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心海八路汽车城店</td>
   <td class="name-cell">华跃</td>
-  <td class="total-cell">34</td>
+  <td class="total-cell scell">34</td>
   <td class="lock-num sep scell">21</td>
   <td class="ratio-cell scell">61.8%</td>
   <td class="lock-num sep scell">4</td>
@@ -4004,7 +4007,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心海八西路店</td>
   <td class="name-cell">华跃</td>
-  <td class="total-cell">24</td>
+  <td class="total-cell scell">24</td>
   <td class="lock-num sep scell">16</td>
   <td class="ratio-cell scell">66.7%</td>
   <td class="lock-num sep scell">4</td>
@@ -4031,7 +4034,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心广佛汽车城店</td>
   <td class="name-cell">华跃</td>
-  <td class="total-cell">2</td>
+  <td class="total-cell scell">2</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell bot5 scell">0.0%</td>
   <td class="lock-num sep scell">1</td>
@@ -4058,7 +4061,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心三水友好车城店</td>
   <td class="name-cell">智迅</td>
-  <td class="total-cell">26</td>
+  <td class="total-cell scell">26</td>
   <td class="lock-num sep scell">14</td>
   <td class="ratio-cell scell">53.8%</td>
   <td class="lock-num sep scell">6</td>
@@ -4085,7 +4088,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心狮山汽车城店</td>
   <td class="name-cell">智迅</td>
-  <td class="total-cell">13</td>
+  <td class="total-cell scell">13</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell top5 scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -4112,7 +4115,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心高明荷香路店</td>
   <td class="name-cell">智迅</td>
-  <td class="total-cell">5</td>
+  <td class="total-cell scell">5</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">20.0%</td>
   <td class="lock-num sep scell">3</td>
@@ -4139,7 +4142,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">江门</td>
   <td class="name-cell">江门体验中心陈宜禧路店</td>
   <td class="name-cell">利泰</td>
-  <td class="total-cell">6</td>
+  <td class="total-cell scell">6</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">33.3%</td>
   <td class="lock-num sep scell">1</td>
@@ -4166,7 +4169,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">江门</td>
   <td class="name-cell">江门零跑中心冈州大道店</td>
   <td class="name-cell">智迅</td>
-  <td class="total-cell">29</td>
+  <td class="total-cell scell">29</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">27.6%</td>
   <td class="lock-num sep scell">4</td>
@@ -4193,7 +4196,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">江门</td>
   <td class="name-cell">江门体验中心开平车城店</td>
   <td class="name-cell">智迅</td>
-  <td class="total-cell">15</td>
+  <td class="total-cell scell">15</td>
   <td class="lock-num sep scell">3</td>
   <td class="ratio-cell scell">20.0%</td>
   <td class="lock-num sep scell">7</td>
@@ -4220,7 +4223,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">江门</td>
   <td class="name-cell">江门体验中心蓬江华鸿店</td>
   <td class="name-cell">智迅</td>
-  <td class="total-cell">2</td>
+  <td class="total-cell scell">2</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">50.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -4247,7 +4250,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">江门</td>
   <td class="name-cell">江门零跑中心建设路店</td>
   <td class="name-cell">磐鼎</td>
-  <td class="total-cell">14</td>
+  <td class="total-cell scell">14</td>
   <td class="lock-num sep scell">11</td>
   <td class="ratio-cell scell">78.6%</td>
   <td class="lock-num sep scell">2</td>
@@ -4274,7 +4277,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">江门</td>
   <td class="name-cell">江门体验中心鹤山店</td>
   <td class="name-cell">磐鼎</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -4301,7 +4304,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">韶关</td>
   <td class="name-cell">韶关体验中心浈江大道店</td>
   <td class="name-cell">利泰</td>
-  <td class="total-cell">14</td>
+  <td class="total-cell scell">14</td>
   <td class="lock-num sep scell">4</td>
   <td class="ratio-cell scell">28.6%</td>
   <td class="lock-num sep scell">2</td>
@@ -4328,7 +4331,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">韶关</td>
   <td class="name-cell">韶关零跑中心沐溪大道店</td>
   <td class="name-cell">利泰</td>
-  <td class="total-cell">12</td>
+  <td class="total-cell scell">12</td>
   <td class="lock-num sep scell">5</td>
   <td class="ratio-cell scell">41.7%</td>
   <td class="lock-num sep scell">6</td>
@@ -4355,7 +4358,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山零跑中心顺德大良车城店</td>
   <td class="name-cell">未来智选</td>
-  <td class="total-cell">46</td>
+  <td class="total-cell scell">46</td>
   <td class="lock-num sep scell">15</td>
   <td class="ratio-cell scell">32.6%</td>
   <td class="lock-num sep scell">13</td>
@@ -4382,7 +4385,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心容桂车城店</td>
   <td class="name-cell">未来智选</td>
-  <td class="total-cell">16</td>
+  <td class="total-cell scell">16</td>
   <td class="lock-num sep scell">4</td>
   <td class="ratio-cell scell">25.0%</td>
   <td class="lock-num sep scell">5</td>
@@ -4409,7 +4412,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心北滘车城店</td>
   <td class="name-cell">未来智选</td>
-  <td class="total-cell">13</td>
+  <td class="total-cell scell">13</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell bot5 scell">15.4%</td>
   <td class="lock-num sep scell">4</td>
@@ -4436,7 +4439,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">佛山</td>
   <td class="name-cell">佛山体验中心龙江店</td>
   <td class="name-cell">未来智选</td>
-  <td class="total-cell">1</td>
+  <td class="total-cell scell">1</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -4463,7 +4466,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心莞太路店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">30</td>
+  <td class="total-cell scell">30</td>
   <td class="lock-num sep scell">11</td>
   <td class="ratio-cell scell">36.7%</td>
   <td class="lock-num sep scell">10</td>
@@ -4490,7 +4493,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心大岭山镇店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">10</td>
+  <td class="total-cell scell">10</td>
   <td class="lock-num sep scell">6</td>
   <td class="ratio-cell scell">60.0%</td>
   <td class="lock-num sep scell">2</td>
@@ -4517,7 +4520,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心长安振安东路店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">10</td>
+  <td class="total-cell scell">10</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">20.0%</td>
   <td class="lock-num sep scell">4</td>
@@ -4544,7 +4547,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心厚街店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">7</td>
+  <td class="total-cell scell">7</td>
   <td class="lock-num sep scell">3</td>
   <td class="ratio-cell scell">42.9%</td>
   <td class="lock-num sep scell">1</td>
@@ -4571,7 +4574,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心寮步车城店</td>
   <td class="name-cell">东富</td>
-  <td class="total-cell">34</td>
+  <td class="total-cell scell">34</td>
   <td class="lock-num sep scell">14</td>
   <td class="ratio-cell scell">41.2%</td>
   <td class="lock-num sep scell">8</td>
@@ -4598,7 +4601,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心常朗路店</td>
   <td class="name-cell">东朋</td>
-  <td class="total-cell">32</td>
+  <td class="total-cell scell">32</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">25.0%</td>
   <td class="lock-num sep scell">8</td>
@@ -4625,7 +4628,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心东城店</td>
   <td class="name-cell">东朋</td>
-  <td class="total-cell">26</td>
+  <td class="total-cell scell">26</td>
   <td class="lock-num sep scell">16</td>
   <td class="ratio-cell scell">61.5%</td>
   <td class="lock-num sep scell">1</td>
@@ -4652,7 +4655,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心石排大道店</td>
   <td class="name-cell">东朋</td>
-  <td class="total-cell">20</td>
+  <td class="total-cell scell">20</td>
   <td class="lock-num sep scell">7</td>
   <td class="ratio-cell scell">35.0%</td>
   <td class="lock-num sep scell">2</td>
@@ -4679,7 +4682,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心松山湖店</td>
   <td class="name-cell">东朋</td>
-  <td class="total-cell">13</td>
+  <td class="total-cell scell">13</td>
   <td class="lock-num sep scell">4</td>
   <td class="ratio-cell scell">30.8%</td>
   <td class="lock-num sep scell">2</td>
@@ -4706,7 +4709,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心企石店</td>
   <td class="name-cell">东朋</td>
-  <td class="total-cell">7</td>
+  <td class="total-cell scell">7</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">28.6%</td>
   <td class="lock-num sep scell">0</td>
@@ -4733,7 +4736,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心高胜车城店</td>
   <td class="name-cell">东朋</td>
-  <td class="total-cell">1</td>
+  <td class="total-cell scell">1</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -4760,7 +4763,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心虎门车城店</td>
   <td class="name-cell">华跃</td>
-  <td class="total-cell">22</td>
+  <td class="total-cell scell">22</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">36.4%</td>
   <td class="lock-num sep scell">8</td>
@@ -4787,7 +4790,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞体验中心高埗车城店</td>
   <td class="name-cell">骏威</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -4814,7 +4817,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东莞</td>
   <td class="name-cell">东莞零跑中心塘厦车城店</td>
   <td class="name-cell">骏威</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -4841,7 +4844,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">中山</td>
   <td class="name-cell">中山零跑中心小榄菊城大道店</td>
   <td class="name-cell">智盈</td>
-  <td class="total-cell">24</td>
+  <td class="total-cell scell">24</td>
   <td class="lock-num sep scell">12</td>
   <td class="ratio-cell scell">50.0%</td>
   <td class="lock-num sep scell">4</td>
@@ -4868,7 +4871,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">中山</td>
   <td class="name-cell">中山体验中心三乡店</td>
   <td class="name-cell">智盈</td>
-  <td class="total-cell">1</td>
+  <td class="total-cell scell">1</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -4895,7 +4898,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">中山</td>
   <td class="name-cell">中山零跑中心彩虹大道店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">23</td>
+  <td class="total-cell scell">23</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell scell">56.5%</td>
   <td class="lock-num sep scell">6</td>
@@ -4922,7 +4925,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">中山</td>
   <td class="name-cell">中山零跑中心中山六路店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">19</td>
+  <td class="total-cell scell">19</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">42.1%</td>
   <td class="lock-num sep scell">7</td>
@@ -4949,7 +4952,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">中山</td>
   <td class="name-cell">中山体验中心港口店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">11</td>
+  <td class="total-cell scell">11</td>
   <td class="lock-num sep scell">5</td>
   <td class="ratio-cell scell">45.5%</td>
   <td class="lock-num sep scell">4</td>
@@ -4976,7 +4979,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">中山</td>
   <td class="name-cell">中山零跑中心金宁汽车城店</td>
   <td class="name-cell">金盈</td>
-  <td class="total-cell">12</td>
+  <td class="total-cell scell">12</td>
   <td class="lock-num sep scell">3</td>
   <td class="ratio-cell scell">25.0%</td>
   <td class="lock-num sep scell">3</td>
@@ -5003,7 +5006,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">珠海</td>
   <td class="name-cell">珠海零跑中心上冲车城店</td>
   <td class="name-cell">申裕</td>
-  <td class="total-cell">17</td>
+  <td class="total-cell scell">17</td>
   <td class="lock-num sep scell">4</td>
   <td class="ratio-cell scell">23.5%</td>
   <td class="lock-num sep scell">8</td>
@@ -5030,7 +5033,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">珠海</td>
   <td class="name-cell">珠海体验中心西部车城店</td>
   <td class="name-cell">申裕</td>
-  <td class="total-cell">15</td>
+  <td class="total-cell scell">15</td>
   <td class="lock-num sep scell">10</td>
   <td class="ratio-cell scell">66.7%</td>
   <td class="lock-num sep scell">3</td>
@@ -5057,7 +5060,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">珠海</td>
   <td class="name-cell">珠海体验中心美满车城店</td>
   <td class="name-cell">达田</td>
-  <td class="total-cell">16</td>
+  <td class="total-cell scell">16</td>
   <td class="lock-num sep scell">7</td>
   <td class="ratio-cell scell">43.8%</td>
   <td class="lock-num sep scell">3</td>
@@ -5084,7 +5087,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">珠海</td>
   <td class="name-cell">珠海零跑中心南屏珠海大道店</td>
   <td class="name-cell">达田</td>
-  <td class="total-cell">16</td>
+  <td class="total-cell scell">16</td>
   <td class="lock-num sep scell">7</td>
   <td class="ratio-cell scell">43.8%</td>
   <td class="lock-num sep scell">4</td>
@@ -5111,7 +5114,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州零跑中心惠南汽车城店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">43</td>
+  <td class="total-cell scell">43</td>
   <td class="lock-num sep scell">25</td>
   <td class="ratio-cell scell">58.1%</td>
   <td class="lock-num sep scell">5</td>
@@ -5138,7 +5141,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州零跑中心仲恺汽车城店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">16</td>
+  <td class="total-cell scell">16</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">50.0%</td>
   <td class="lock-num sep scell">6</td>
@@ -5165,7 +5168,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心河南岸车城店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">9</td>
+  <td class="total-cell scell">9</td>
   <td class="lock-num sep scell">5</td>
   <td class="ratio-cell scell">55.6%</td>
   <td class="lock-num sep scell">1</td>
@@ -5192,7 +5195,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心惠东店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">4</td>
+  <td class="total-cell scell">4</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">25.0%</td>
   <td class="lock-num sep scell">2</td>
@@ -5219,7 +5222,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心龙门店</td>
   <td class="name-cell">一维</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5246,7 +5249,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州零跑中心金山汽车城店</td>
   <td class="name-cell">新零致</td>
-  <td class="total-cell">48</td>
+  <td class="total-cell scell">48</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell scell">27.1%</td>
   <td class="lock-num sep scell">12</td>
@@ -5273,7 +5276,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州零跑中心人民四路店</td>
   <td class="name-cell">新零致</td>
-  <td class="total-cell">20</td>
+  <td class="total-cell scell">20</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell scell">65.0%</td>
   <td class="lock-num sep scell">5</td>
@@ -5300,7 +5303,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心博罗店</td>
   <td class="name-cell">新零致</td>
-  <td class="total-cell">1</td>
+  <td class="total-cell scell">1</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell bot5 scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5327,7 +5330,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">惠州</td>
   <td class="name-cell">惠州体验中心大亚湾店</td>
   <td class="name-cell">新零致</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5354,7 +5357,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">揭阳</td>
   <td class="name-cell">揭阳零跑中心荣通汽车城店</td>
   <td class="name-cell">荣通</td>
-  <td class="total-cell">10</td>
+  <td class="total-cell scell">10</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">20.0%</td>
   <td class="lock-num sep scell">4</td>
@@ -5381,7 +5384,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">揭阳</td>
   <td class="name-cell">揭阳体验中心普宁翔悦时代店</td>
   <td class="name-cell">荣通</td>
-  <td class="total-cell">9</td>
+  <td class="total-cell scell">9</td>
   <td class="lock-num sep scell">6</td>
   <td class="ratio-cell scell">66.7%</td>
   <td class="lock-num sep scell">0</td>
@@ -5408,7 +5411,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">梅州</td>
   <td class="name-cell">梅州零跑中心环市西路店</td>
   <td class="name-cell">新零致</td>
-  <td class="total-cell">14</td>
+  <td class="total-cell scell">14</td>
   <td class="lock-num sep scell">3</td>
   <td class="ratio-cell scell">21.4%</td>
   <td class="lock-num sep scell">6</td>
@@ -5435,7 +5438,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">梅州</td>
   <td class="name-cell">梅州零跑中心剑英大道店</td>
   <td class="name-cell">骏诚</td>
-  <td class="total-cell">26</td>
+  <td class="total-cell scell">26</td>
   <td class="lock-num sep scell">12</td>
   <td class="ratio-cell scell">46.2%</td>
   <td class="lock-num sep scell">8</td>
@@ -5462,7 +5465,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">汕尾</td>
   <td class="name-cell">汕尾体验中心汕尾大道店</td>
   <td class="name-cell">新零致</td>
-  <td class="total-cell">10</td>
+  <td class="total-cell scell">10</td>
   <td class="lock-num sep scell">3</td>
   <td class="ratio-cell scell">30.0%</td>
   <td class="lock-num sep scell">3</td>
@@ -5489,7 +5492,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">汕尾</td>
   <td class="name-cell">汕尾体验中心海丰店</td>
   <td class="name-cell">新零致</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5516,7 +5519,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">潮州</td>
   <td class="name-cell">潮州零跑中心潮汕路店</td>
   <td class="name-cell">荣通</td>
-  <td class="total-cell">23</td>
+  <td class="total-cell scell">23</td>
   <td class="lock-num sep scell">10</td>
   <td class="ratio-cell scell">43.5%</td>
   <td class="lock-num sep scell">3</td>
@@ -5543,7 +5546,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">万宁</td>
   <td class="name-cell">万宁体验中心海榆东线店</td>
   <td class="name-cell">合群</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5570,7 +5573,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">三亚</td>
   <td class="name-cell">三亚零跑中心榆亚路店</td>
   <td class="name-cell">合群</td>
-  <td class="total-cell">23</td>
+  <td class="total-cell scell">23</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell scell">56.5%</td>
   <td class="lock-num sep scell">9</td>
@@ -5597,7 +5600,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">三亚</td>
   <td class="name-cell">三亚体验中心迎宾路汽车城店</td>
   <td class="name-cell">合群</td>
-  <td class="total-cell">16</td>
+  <td class="total-cell scell">16</td>
   <td class="lock-num sep scell">7</td>
   <td class="ratio-cell scell">43.8%</td>
   <td class="lock-num sep scell">5</td>
@@ -5624,7 +5627,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">三亚</td>
   <td class="name-cell">三亚体验中心吉阳店</td>
   <td class="name-cell">合群</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5651,7 +5654,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">东方</td>
   <td class="name-cell">东方体验中心东方大道店</td>
   <td class="name-cell">合群</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5678,7 +5681,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">临高</td>
   <td class="name-cell">临高体验中心市政大道店</td>
   <td class="name-cell">铧丰</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5705,7 +5708,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">乐东</td>
   <td class="name-cell">乐东体验中心抱由店</td>
   <td class="name-cell">合群</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5732,7 +5735,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">云浮</td>
   <td class="name-cell">云浮体验中心环市中路店</td>
   <td class="name-cell">利生</td>
-  <td class="total-cell">18</td>
+  <td class="total-cell scell">18</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">44.4%</td>
   <td class="lock-num sep scell">6</td>
@@ -5759,7 +5762,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">云浮</td>
   <td class="name-cell">云浮体验中心罗定店</td>
   <td class="name-cell">利生</td>
-  <td class="total-cell">1</td>
+  <td class="total-cell scell">1</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5786,7 +5789,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">云浮</td>
   <td class="name-cell">云浮体验中心新兴店</td>
   <td class="name-cell">利生</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5813,7 +5816,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">定安</td>
   <td class="name-cell">定安体验中心定城店</td>
   <td class="name-cell">正大</td>
-  <td class="total-cell">1</td>
+  <td class="total-cell scell">1</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5840,7 +5843,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心琼山大道店</td>
   <td class="name-cell">正大</td>
-  <td class="total-cell">39</td>
+  <td class="total-cell scell">39</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">20.5%</td>
   <td class="lock-num sep scell">13</td>
@@ -5867,7 +5870,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心江东店</td>
   <td class="name-cell">正大</td>
-  <td class="total-cell">22</td>
+  <td class="total-cell scell">22</td>
   <td class="lock-num sep scell">6</td>
   <td class="ratio-cell scell">27.3%</td>
   <td class="lock-num sep scell">5</td>
@@ -5894,7 +5897,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心美安科技城店</td>
   <td class="name-cell">铧丰</td>
-  <td class="total-cell">21</td>
+  <td class="total-cell scell">21</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">38.1%</td>
   <td class="lock-num sep scell">7</td>
@@ -5921,7 +5924,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心上邦百汇城店</td>
   <td class="name-cell">铧丰</td>
-  <td class="total-cell">16</td>
+  <td class="total-cell scell">16</td>
   <td class="lock-num sep scell">12</td>
   <td class="ratio-cell scell">75.0%</td>
   <td class="lock-num sep scell">1</td>
@@ -5948,7 +5951,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心西秀店</td>
   <td class="name-cell">铧丰</td>
-  <td class="total-cell">2</td>
+  <td class="total-cell scell">2</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -5975,7 +5978,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">湛江</td>
   <td class="name-cell">湛江零跑中心海田车城店</td>
   <td class="name-cell">源流</td>
-  <td class="total-cell">40</td>
+  <td class="total-cell scell">40</td>
   <td class="lock-num sep scell">16</td>
   <td class="ratio-cell scell">40.0%</td>
   <td class="lock-num sep scell">6</td>
@@ -6002,7 +6005,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">湛江</td>
   <td class="name-cell">湛江体验中心瀚龙车城店</td>
   <td class="name-cell">源流</td>
-  <td class="total-cell">15</td>
+  <td class="total-cell scell">15</td>
   <td class="lock-num sep scell">3</td>
   <td class="ratio-cell scell">20.0%</td>
   <td class="lock-num sep scell">4</td>
@@ -6029,7 +6032,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">湛江</td>
   <td class="name-cell">湛江体验中心粤西车城店</td>
   <td class="name-cell">源流</td>
-  <td class="total-cell">10</td>
+  <td class="total-cell scell">10</td>
   <td class="lock-num sep scell">5</td>
   <td class="ratio-cell scell">50.0%</td>
   <td class="lock-num sep scell">4</td>
@@ -6056,7 +6059,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">肇庆</td>
   <td class="name-cell">肇庆零跑中心肇庆大道店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">25</td>
+  <td class="total-cell scell">25</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">32.0%</td>
   <td class="lock-num sep scell">5</td>
@@ -6083,7 +6086,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">肇庆</td>
   <td class="name-cell">肇庆体验中心四会店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">3</td>
+  <td class="total-cell scell">3</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell bot5 scell">0.0%</td>
   <td class="lock-num sep scell">1</td>
@@ -6110,7 +6113,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">茂名</td>
   <td class="name-cell">茂名零跑中心茂名大道店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">24</td>
+  <td class="total-cell scell">24</td>
   <td class="lock-num sep scell">14</td>
   <td class="ratio-cell scell">58.3%</td>
   <td class="lock-num sep scell">4</td>
@@ -6137,7 +6140,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">茂名</td>
   <td class="name-cell">茂名体验中心茂水路店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">3</td>
+  <td class="total-cell scell">3</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">66.7%</td>
   <td class="lock-num sep scell">1</td>
@@ -6164,7 +6167,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">茂名</td>
   <td class="name-cell">茂名体验中心信宜店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6191,7 +6194,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">茂名</td>
   <td class="name-cell">茂名体验中心高州店</td>
   <td class="name-cell">美轮</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6218,7 +6221,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">阳江</td>
   <td class="name-cell">阳江零跑中心溢信汽车城店</td>
   <td class="name-cell">溢信</td>
-  <td class="total-cell">28</td>
+  <td class="total-cell scell">28</td>
   <td class="lock-num sep scell">13</td>
   <td class="ratio-cell scell">46.4%</td>
   <td class="lock-num sep scell">5</td>
@@ -6245,7 +6248,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">阳江</td>
   <td class="name-cell">阳江体验中心阳春店</td>
   <td class="name-cell">溢信</td>
-  <td class="total-cell">9</td>
+  <td class="total-cell scell">9</td>
   <td class="lock-num sep scell">7</td>
   <td class="ratio-cell scell">77.8%</td>
   <td class="lock-num sep scell">1</td>
@@ -6272,7 +6275,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">阳江</td>
   <td class="name-cell">阳江体验中心新达城店</td>
   <td class="name-cell">溢信</td>
-  <td class="total-cell">5</td>
+  <td class="total-cell scell">5</td>
   <td class="lock-num sep scell">5</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6299,7 +6302,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">陵水</td>
   <td class="name-cell">陵水体验中心桃源大道店</td>
   <td class="name-cell">合群</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6326,7 +6329,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">儋州</td>
   <td class="name-cell">儋州体验中心西部汽车城店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">1</td>
+  <td class="total-cell scell">1</td>
   <td class="lock-num sep scell">1</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6353,7 +6356,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">儋州</td>
   <td class="name-cell">儋州体验中心中兴大街店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6380,7 +6383,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">文昌</td>
   <td class="name-cell">文昌体验中心文城店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6407,7 +6410,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心南海大道东店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">61</td>
+  <td class="total-cell scell">61</td>
   <td class="lock-num sep scell">17</td>
   <td class="ratio-cell scell">27.9%</td>
   <td class="lock-num sep scell">13</td>
@@ -6434,7 +6437,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心南海大道店（销售）</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">39</td>
+  <td class="total-cell scell">39</td>
   <td class="lock-num sep scell">22</td>
   <td class="ratio-cell scell">56.4%</td>
   <td class="lock-num sep scell">8</td>
@@ -6461,7 +6464,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心海口东站店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">25</td>
+  <td class="total-cell scell">25</td>
   <td class="lock-num sep scell">8</td>
   <td class="ratio-cell scell">32.0%</td>
   <td class="lock-num sep scell">6</td>
@@ -6488,7 +6491,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口体验中心海甸城店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">13</td>
+  <td class="total-cell scell">13</td>
   <td class="lock-num sep scell">7</td>
   <td class="ratio-cell scell">53.8%</td>
   <td class="lock-num sep scell">3</td>
@@ -6515,7 +6518,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">海口</td>
   <td class="name-cell">海口零跑中心海盛路店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">9</td>
+  <td class="total-cell scell">9</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">22.2%</td>
   <td class="lock-num sep scell">5</td>
@@ -6542,7 +6545,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">澄迈</td>
   <td class="name-cell">澄迈体验中心金马大道店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">2</td>
+  <td class="total-cell scell">2</td>
   <td class="lock-num sep scell">2</td>
   <td class="ratio-cell scell">100.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6569,7 +6572,7 @@ tr.data-row:hover{background:#fff}
   <td class="name-cell">琼海</td>
   <td class="name-cell">琼海体验中心豪华路车城店</td>
   <td class="name-cell">九兴</td>
-  <td class="total-cell">0</td>
+  <td class="total-cell scell">0</td>
   <td class="lock-num sep scell">0</td>
   <td class="ratio-cell scell">0.0%</td>
   <td class="lock-num sep scell">0</td>
@@ -6697,8 +6700,9 @@ tr.data-row:hover{background:#fff}
       var groupTh=tbl.querySelector('thead tr.header-main th.model-group');
       var cg=tbl.querySelector('colgroup');
       var badge=document.getElementById(o.badgeId);
-      var PREFIXW=526, SERW=440, WS=64, WL=56, WR=56, DEFW=45;
+      var PREFIXW=526, PREFIXW_F=472, SERW=440, WS=64, WL=56, WR=56, DEFW=45, TOTW=54;
       var COLS_FIX='<col style="width:110px"><col style="width:72px"><col style="width:200px"><col style="width:90px"><col style="width:54px">';
+      var COLS_FIX_F='<col style="width:110px"><col style="width:72px"><col style="width:200px"><col style="width:90px">';
       var COLS_SER='<col span="2" style="width:44px"><col span="2" style="width:44px"><col span="2" style="width:44px"><col span="2" style="width:44px"><col span="2" style="width:44px">';
       // 缓存默认静态车型列（切回「全部」时原样还原，保留 top5/bot5 标色）
       Array.prototype.forEach.call(tbl.querySelectorAll('tbody tr'), function(tr){
@@ -6723,12 +6727,12 @@ tr.data-row:hover{background:#fff}
           el.style.display = filtered ? 'none' : '';
         });
         Array.prototype.forEach.call(headRow.querySelectorAll('th.mth'), function(t){ t.parentNode.removeChild(t); });
-        var cols=COLS_FIX, w=PREFIXW;
+        var cols=filtered?COLS_FIX_F:COLS_FIX, w=filtered?PREFIXW_F:PREFIXW;
         if(filtered){
           groupTh.textContent='所选车型';
           groupTh.setAttribute('colspan', String(1+idx.length*2));
           var thSum=document.createElement('th');
-          thSum.className='mth sep'; thSum.textContent='合计'; thSum.style.width=WS+'px';
+          thSum.className='mth sep sum-th'; thSum.textContent='合计'; thSum.style.width=WS+'px';
           headRow.appendChild(thSum);
           cols += '<col style="width:'+WS+'px">'; w += WS;
           idx.forEach(function(i){
@@ -6760,7 +6764,7 @@ tr.data-row:hover{background:#fff}
           if(!idx.length){ tr.insertAdjacentHTML('beforeend', tr.__mdef||''); return; }
           var sum=0;
           idx.forEach(function(i){ sum += a[i]||0; });
-          var cells='<td class="mtd lock-num sep" data-sum="'+sum+'">'+sum+'</td>';
+          var cells='<td class="mtd lock-num sep sum-col" data-sum="'+sum+'">'+sum+'</td>';
           idx.forEach(function(i){
             var v=a[i]||0;
             cells += '<td class="mtd lock-num">'+v+'</td>';
@@ -6827,7 +6831,9 @@ tr.data-row:hover{background:#fff}
         +'thead th{background:#c8e6c9;color:#1b5e20;font-weight:700}'
         +'.name-cell{text-align:left}'
         +'tr.summary-row td{background:#fff9c4;font-weight:700;color:#1b5e20}'
-        +'.top5{background:#c8e6c9;color:#1b5e20;font-weight:700}'
+        +'.sum-col{background:#fff59d;color:#1b5e20;font-weight:700}'
+        +'.sum-th{background:#e8d98a;color:#1b5e20;font-weight:700}'
+        '.top5{background:#c8e6c9;color:#1b5e20;font-weight:700}'
         +'.bot5{background:#ffcdd2;color:#b71c1c;font-weight:700}'
         +'.top5-model{background:#e8f5e9;color:#2e7d32}'
         +'.bot5-model{background:#ffe0b2;color:#e65100}';
